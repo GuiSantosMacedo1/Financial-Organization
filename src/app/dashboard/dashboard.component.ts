@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { CardsComponent } from './components/cards/cards.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, CardsComponent],
 templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
