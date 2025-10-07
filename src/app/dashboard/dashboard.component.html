@@ -2,11 +2,9 @@
   <a class="board" href="#"><i class="fa-solid fa-wallet"></i>Finance Control</a>
     <div class="dashboard-sidebar">
       <ul role="navigation">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Transactions</a></li>
-        <li><a href="#">Budgets</a></li>
-        <li><a href="#">Metas</a></li>
-        <li><a href="#">Settings</a></li>
+        <li *ngFor="let item of menuItems">
+          <a (click)="setActiveTab(item.tab)" [class.active]="isActiveTab(item.tab)" [routerLink]="item.route">{{ item.name }}</a>
+        </li>
       </ul>
     </div>
 </div>
