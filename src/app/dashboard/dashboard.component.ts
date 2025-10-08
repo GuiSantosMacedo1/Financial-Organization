@@ -4,11 +4,12 @@ import { RouterLink } from "@angular/router";
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 import { CardsComponent } from './components/cards/cards.component';
+import { TransactionsComponent } from "./components/transactions/transactions.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink, CardsComponent],
+  imports: [CommonModule, RouterLink, CardsComponent, TransactionsComponent],
 templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
