@@ -1,7 +1,8 @@
-body {
+.geral {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #e0e0e0;
 }
 
 .board{
@@ -16,14 +17,13 @@ body {
   align-items: center;
 }
 .board:hover {
-  background-color: #e0e0e0; // Efeito hover
   color: #007bff; // Cor no hover
 }
 
 .dashboard-container {
   padding: 6px 48px;
   border-radius: 6px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   height: 56px;
 }
 
@@ -33,12 +33,12 @@ body {
   margin: 0; // Remove margem padrão
   display: flex;
   flex-direction: row;
+  justify-content: end;
   gap: 8px; // Espaçamento uniforme entre itens
 }
 
 .dashboard-sidebar li {
   margin-bottom: 12px;
-  width: 100%; // Ocupa toda largura disponível
 }
 
 .dashboard-sidebar a {
@@ -51,7 +51,6 @@ body {
 }
 
 .dashboard-sidebar a:hover {
-  background-color: #e0e0e0; // Efeito hover
   color: #007bff; // Cor no hover
 }
 
