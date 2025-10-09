@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 import { CardsComponent } from './components/cards/cards.component';
 import { TransactionsComponent } from "./components/transactions/transactions.component";
+import { ModalTransactionsComponent } from './components/modal-transactions/modal-transactions.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink, CardsComponent, TransactionsComponent],
-templateUrl: './dashboard.component.html',
+  imports: [CommonModule, RouterLink, CardsComponent, TransactionsComponent, ModalTransactionsComponent],
+  templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  activeModal: boolean = false;
 
   constructor(private router: Router) {}
 
