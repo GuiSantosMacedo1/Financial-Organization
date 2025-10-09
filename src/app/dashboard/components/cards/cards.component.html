@@ -7,7 +7,7 @@
         </div>
         <div class="receitas ms-4" style="color: rgb(125, 125, 125);">
           Receitas
-          <div class="value" style="color: green; font-weight: bold;">R$ 5.000,00</div>
+          <div class="value" style="color: green; font-weight: bold;">{{ calculateTotalIncome() | currency:'BRL':'symbol':'1.2-2' }}</div>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
         </div>
         <div class="despesas ms-4" style="color: rgb(125, 125, 125);">
           Despesas
-          <div class="value" style="color: red; font-weight: bold;">R$ 2.000,00</div>
+          <div class="value" style="color: red; font-weight: bold;">{{ calculateTotalExpense() | currency:'BRL':'symbol':'1.2-2' }}</div>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
         </div>
       <div class="saldo ms-4" style="color: rgb(125, 125, 125);">
         Saldo
-        <div class="value" style="color: blue; font-weight: bold;">R$ 3.000,00</div>
+        <div class="value" style="color: blue; font-weight: bold;">{{ calculateBalance() | currency:'BRL':'symbol':'1.2-2' }}</div>
       </div>
     </div>
     </div>
