@@ -17,9 +17,9 @@ import { ModalTransactionsComponent } from './components/modal-transactions/moda
 export class DashboardComponent implements OnInit {
 
   activeModal: boolean = false;
-
+  
   constructor(private router: Router) {}
-
+  
   ngOnInit(): void {
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
@@ -28,33 +28,21 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  navigateTo(route: string, itemId: string): void {
-    this.setActiveTab(itemId)
-    this.router.navigate([route]);
-  }
-
   private updateActiveMenuFromRoute(url: string): void {
     const menuItem = this.menuItems.find(item => 
       url.includes(item.route.substring(1)));
-    if (menuItem) {
-      this.activeTab = menuItem.tab;
+      if (menuItem) {
+        this.activeTab = menuItem.tab;
+      }
     }
-  }
 
-  activeTab: string = 'dashboard';
-
-  menuItems = [
-    { name: 'Dashboard', tab: 'dashboard', route: '/dashboard' },
-    { name: 'Transactions', tab: 'transactions', route: '/transactions' },
-    { name: 'Budgets', tab: 'budgets', route: '/budgets' },
-    { name: 'Metas', tab: 'metas', route: '/metas' },
-    { name: 'Settings', tab: 'settings', route: '/settings' }
-  ]
-
-  setActiveTab(tab: string): void {
-    this.activeTab = tab;
+    activeTab: string = 'dashboard';
+    
+    menuItems = [
+      { name: 'Dashboard', tab: 'dashboard', route: '/dashboard' },
+      { name: 'Transactions', tab: 'transactions', route: '/transactions' },
+      { name: 'Budgets', tab: 'budgets', route: '/budgets' },
+      { name: 'Metas', tab: 'metas', route: '/metas' },
+      { name: 'Settings', tab: 'settings', route: '/settings' }
+    ]
   }
-  isActiveTab(tab: string): boolean {
-    return this.activeTab === tab;
-  }
-}

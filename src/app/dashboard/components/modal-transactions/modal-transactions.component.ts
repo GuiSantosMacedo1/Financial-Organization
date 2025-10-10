@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal-transactions',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './modal-transactions.component.html',
   styleUrl: './modal-transactions.component.scss'
 })
