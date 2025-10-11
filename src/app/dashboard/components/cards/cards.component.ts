@@ -12,9 +12,12 @@ export class CardsComponent {
 
   transactions: any[] = [];
 
-  constructor(private transactionsService: TransactionsService) { }
+  constructor(private transactionsService: TransactionsService) {
+}
   ngOnInit(): void {
-    this.transactions = this.transactionsService.getTransactions();
+    this.transactionsService.getTransactions().subscribe((response: any) => {
+      this.transactions = response.data || [];
+    });
   }
 
   calculateTotalIncome(): number {

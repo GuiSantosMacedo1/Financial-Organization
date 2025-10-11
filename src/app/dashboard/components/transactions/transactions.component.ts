@@ -14,8 +14,10 @@ export class TransactionsComponent {
   
   constructor(private transactionsService: TransactionsService) {}
   ngOnInit(): void {
-    this.transactions = this.transactionsService.getTransactions();
-    this.transactionsByCategory();
+    this.transactionsService.getTransactions().subscribe((response: any) => {
+      this.transactions = response.data || [];
+      this.transactionsByCategory();
+    });
   }
 
 
@@ -64,7 +66,6 @@ export class TransactionsComponent {
       transactions: grouped[category],
       total: grouped[category].reduce((sum: number, t: any) => sum + t.amount, 0)
     }));
-    console.log(this.categories);
   }
   porcentageOfCategory(total: number): string {
     const balance = this.calculateTotalIncome();
