@@ -10,7 +10,10 @@ export class TransactionsService {
 
   constructor(private http: HttpClient) { }
 
-getTransactions(params?: any): Observable<any> {
+  getTransactions(params?: any): Observable<any> {
   return this.http.get(this.apiUrl, { params });
 }
+  postTransactions(data:any): Observable<any> {
+    return this.http.post(this.apiUrl, data);
+  }
 }

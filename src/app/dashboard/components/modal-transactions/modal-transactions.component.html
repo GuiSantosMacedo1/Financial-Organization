@@ -6,29 +6,60 @@
         <button type="button" class="btn-close" (click)="closeModal()"></button>
       </div>
     <div class="modal-body">
-      <form >
+      <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <form (ngSubmit)="createTransaction($event)">
         <div class="form-group mb-3">
           <label for="description" class="form-label">Descrição</label>
-          <input type="text" class="form-control" id="description" name="description" required />
+          <input 
+            type="text" 
+            class="form-control" 
+            id="description" 
+            name="description" 
+            required 
+            [(ngModel)]="transaction.description"
+          />
         </div>
         <div class="form-group mb-3">
           <label for="amount" class="form-label">Valor</label>
-          <input type="number" class="form-control" id="amount" name="amount" required />
+          <input 
+            type="number" 
+            class="form-control" 
+            id="amount" 
+            name="amount" 
+            required 
+            [(ngModel)]="transaction.amount"
+          />
         </div>
         <div class="form-group">
           <label for="type" class="form-label">Tipo</label>
           <div class="radio-group">
             <div class="radio-option d-flex align-items-center gap-2">
-              <input type="radio" class="radio d-flex" id="type-income" name="type" value="income" required />
+              <input 
+                type="radio" 
+                class="radio d-flex" 
+                id="type-income" 
+                name="type" 
+                value="income" 
+                required
+                [(ngModel)]="transaction.type" 
+              />
               <label for="type-income" class="mb-0" style="color: green;">Entrada</label>
-              <input type="radio" class="radio d-flex" id="type-expense" name="type" value="expense" required />
+              <input 
+                type="radio" 
+                class="radio d-flex" 
+                id="type-expense" 
+                name="type" 
+                value="expense" 
+                required
+                [(ngModel)]="transaction.type" 
+              />
               <label for="type-expense" class="mb-0" style="color: red;">Saída</label>
             </div>
           </div>
         </div>
         <div class="form-group mb-3">
           <label for="category" class="form-label">Categoria</label>
-          <select class="form-control" id="category" name="category" required>
+          <select class="form-control" id="category" name="category" required [(ngModel)]="transaction.category">
             <option value="">Selecione uma categoria</option>
             <option value="alimentacao">Alimentação</option>
             <option value="transporte">Transporte</option>
@@ -38,11 +69,11 @@
         </div>
         <div class="form-group mb-3">
           <label for="date" class="form-label">Data</label>
-          <input type="date" class="form-control" id="date" name="date" required />
+          <input type="date" class="form-control" id="date" name="date" required [(ngModel)]="transaction.date" />
         </div>
         <div class="modal-footer d-flex justify-content-end gap-2">
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Adicionar</button>
+          <button type="submit" class="btn btn-primary" (click)="createTransaction($event)">Adicionar</button>
         </div>
       </form>
     </div>
