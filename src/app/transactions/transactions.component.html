@@ -1,1 +1,23 @@
-<p>transactions works!</p>
+<app-side></app-side>
+<div class="container-fluid">
+    <div class="transactions-content">
+    <div class="row">
+      <div class="col-md-6" style="font-size: 0.95rem;">
+        <h2>Transações</h2>
+        <p style="color: gray;">Gerencie todas as suas transações</p>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <button class="btn btn-primary btn-sm rounded p-1" style="font-size: 0.85rem;" (click)="activeModal = true"><i class="fa-solid fa-plus"></i> Nova Transação</button>
+      </div>
+    </div>
+  </div>
+    <div class="filters d-flex">
+      <div class="row border rounded p-2 gap-3" id="borda">
+        <input class="col border border-secondary-subtle rounded p-1" type="text" style="font-size: 0.9rem;">
+        <input class="col border border-secondary-subtle rounded p-1" type="text" style="font-size: 0.9rem;">
+        <input class="col border border-secondary-subtle rounded p-1" type="text" style="font-size: 0.9rem;">
+        <button style="background-color: rgb(207, 207, 207); font-size: 0.85rem; padding: 0.25rem 0.5rem;" class="col btn btn-sm rounded">Limpar filtros</button>
+      </div>
+    </div>
+</div>
+<app-modal-transactions [isOpen]="activeModal" (close)="activeModal = false"></app-modal-transactions>

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TransactionsService } from './../../services/transactions.service';
+import { TransactionsService } from '../../core/services/transactions.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({

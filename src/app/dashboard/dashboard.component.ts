@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { CardsComponent } from './components/cards/cards.component';
 import { TransactionsComponent } from "./components/transactions/transactions.component";
-import { ModalTransactionsComponent } from './components/modal-transactions/modal-transactions.component';
-import { SideBar } from "../core/sidebar/side-bar.component";
+import { ModalTransactionsComponent } from '../shared/modal-transactions/modal-transactions.component';
+import { SideBar } from "../core/layout/sidebar/side-bar.component";
 
 @Component({
   selector: 'app-dashboard',

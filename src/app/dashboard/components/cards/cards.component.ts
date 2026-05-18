@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TransactionsService } from '../../services/transactions.service';
+import { TransactionsService } from '../../../core/services/transactions.service';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cards',
