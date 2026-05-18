@@ -1,0 +1,18 @@
+  <div class="dashboard-container">
+    <div class="row">
+      <div class="col-4">
+          <a class="board" href="#"><i class="fa-solid fa-wallet"></i>Finance Control</a>
+      </div>
+      <div class="col-8">
+        <div class="dashboard-sidebar">
+          <ul role="navigation">
+            <div *ngFor="let item of menuItems" 
+              (click)="onMenuClick(item.route)"
+              [class.active]="activeTab === item.tab">
+              <a>{{ item.name }}</a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
