@@ -1,0 +1,21 @@
+<div class="cards px-5 row">
+  <div *ngFor="let c of configs" class="card-item col border rounded me-3 p-3" style="background-color: rgb(255, 255, 255);">
+    <div class="card-top d-flex justify-content-left align-items-center">
+      <div class="card-icon border p-2 rounded" [ngStyle]="{'background-color': backGroundColor(c.type)}">
+        <i [ngStyle]="{'color': colorText(c.type)}" [class]="iconByType(c.type)"></i>
+      </div>
+      <div class="ms-4">
+        <div class="card-title" style="color:rgb(125, 125, 125);">{{titleByType(c.type)}}</div>
+        <div class="card-value" style="font-weight: bold;" [ngStyle]="{'color': colorText(c.type)}">
+          <ng-container *ngIf="c.type !== 'count'">
+            {{ formatCurrency(getValue(c.type)) }}
+          </ng-container>
+          <ng-container *ngIf="c.type === 'count'">
+            {{ getValue('count') }}
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

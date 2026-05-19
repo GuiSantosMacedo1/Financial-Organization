@@ -3,11 +3,12 @@ import { SideBar } from "../core/layout/sidebar/side-bar.component";
 import { ModalTransactionsComponent } from "../shared/modal-transactions/modal-transactions.component";
 import { NgFor } from '@angular/common';
 import { TransactionsService } from '../core/services/transactions.service';
+import { CardsComponent } from "../shared/cards/cards.component";
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [SideBar, ModalTransactionsComponent, NgFor],
+  imports: [SideBar, ModalTransactionsComponent, NgFor, CardsComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })
