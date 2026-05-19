@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recent-transactions',
@@ -10,10 +11,13 @@ import { TransactionsService } from '../../core/services/transactions.service';
   styleUrl: './recent-transactions.component.scss'
 })
 export class RecentTransactionsComponent {
-  @Input()activeTodos: boolean = false;
+  @Input() activeTodos: boolean = false;
   transactions: any[] = [];
   
-  constructor(private transactionsService: TransactionsService) {}
+  constructor(
+    private transactionsService: TransactionsService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.transactionsService.getTransactions().subscribe((response: any) => {
       this.transactions = response.data || [];
@@ -21,6 +25,9 @@ export class RecentTransactionsComponent {
     });
   }
 
+  routeTransactions(): void{
+    this.router.navigate(['/transactions']);
+  }
 
   getIconsByCategory(category: string): string {
     switch (category) {
