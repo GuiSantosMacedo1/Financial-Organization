@@ -11,20 +11,20 @@
       </div>
     </div>
   </div>
-    <div class="filters d-flex">
-      <div class="row border rounded p-2 gap-3" id="borda">
-        <input class="col border border-secondary-subtle rounded p-1" placeholder="Buscar Transação" type="text" style="font-size: 0.9rem;">
-        <select class = "col border border-secondary-subtle rounded p-1" name="form-select" id="formSelect" style="font-size: 0.9rem;">
-          <option selected>Todos</option>
-          <option value="1">Receitas</option>
-          <option value="2">Despesas</option>
-        </select>
-        <select class = "col border border-secondary-subtle rounded p-1" name="form-select" id="formSelect" style="font-size: 0.9rem;">
-          <option selected>Todos as Categorias</option>
-          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-        </select>
-        <button style="background-color: rgb(207, 207, 207); font-size: 0.85rem; padding: 0.25rem 0.5rem;" class="col btn btn-sm rounded">Limpar filtros</button>
-      </div>
+  <div class="fil px-5 g-3">
+    <div class=" d-flex border rounded" style="gap: 10px; padding: 16px; background-color: white;">
+      <input class="" placeholder="Buscar Transação" type="text" style="font-size: 0.9rem;">
+      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;">
+        <option selected>Todos</option>
+        <option value="1">Receitas</option>
+        <option value="2">Despesas</option>
+      </select>
+      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;">
+        <option selected>Todos as Categorias</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <button  class="btn btn-secondary btn-sm" style="width: 60%;">Limpar filtros</button>
+    </div>
     </div>
     <div class="cards mt-3">
       <app-cards [configs]="[
@@ -34,7 +34,7 @@
       ]">
       </app-cards>
     </div>
-    <div class="transactions px-5">
+    <div class="transactions px-5 mt-3">
       <app-recent-transactions></app-recent-transactions>
     </div>
 </div>
