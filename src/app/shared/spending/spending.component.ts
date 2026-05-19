@@ -1,26 +1,46 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 
 @Component({
-  selector: 'app-transactions',
+  selector: 'app-spending',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './transactions.component.html',
-  styleUrl: './transactions.component.scss'
+  templateUrl: './spending.component.html',
+  styleUrl: './spending.component.scss'
 })
-export class TransactionsComponent {
+export class SpendingComponent implements OnInit {
+  
   transactions: any[] = [];
+  categories: any[] = []
   
   constructor(private transactionsService: TransactionsService) {}
+  
   ngOnInit(): void {
-    this.transactionsService.getTransactions().subscribe((response: any) => {
-      this.transactions = response.data || [];
+    this.transactionsService.getTransactions().subscribe((res) => {
+      this.transactions = res.data || [];
       this.transactionsByCategory();
-    });
+    })
   }
-
-
+  
+  transactionsByCategory() {
+    const grouped = this.transactions.filter(value => value.amount < 0).reduce((categories: any, transaction) => {
+      const category = transaction.category;
+      if (!categories[category]) {
+        categories[category] = [];
+      }
+      categories[category].push(transaction);
+      return categories;
+    }, {});
+    
+    this.categories = Object.keys(grouped).map(category => ({
+      category: category,
+      transactions: grouped[category],
+      total: grouped[category].reduce((sum: number, t: any) => sum + t.amount, 0)
+    }));
+  }
+  
+  
   getIconsByCategory(category: string): string {
     switch (category) {
       case 'Alimentação': return 'fa-utensils';
@@ -43,29 +63,10 @@ export class TransactionsComponent {
       default: return 'bg-secondary';
     }
   }
-
-  categories: any[] = [];
-
+  
   calculateTotalIncome(): number {
     return this.transactions
-      .filter(gasto => gasto.amount < 0).reduce((sum, gasto) => sum + gasto.amount, 0);
-  }
-
-  transactionsByCategory() {
-      const grouped = this.transactions.filter(value => value.amount < 0).reduce((categories: any, transaction) => {
-      const category = transaction.category;
-      if (!categories[category]) {
-        categories[category] = [];
-      }
-      categories[category].push(transaction);
-      return categories;
-    }, {});
-
-    this.categories = Object.keys(grouped).map(category => ({
-      category: category,
-      transactions: grouped[category],
-      total: grouped[category].reduce((sum: number, t: any) => sum + t.amount, 0)
-    }));
+    .filter(gasto => gasto.amount < 0).reduce((sum, gasto) => sum + gasto.amount, 0);
   }
   porcentageOfCategory(total: number): string {
     const balance = this.calculateTotalIncome();

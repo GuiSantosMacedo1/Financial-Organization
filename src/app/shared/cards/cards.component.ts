@@ -69,19 +69,19 @@ export class CardsComponent {
 
   backGroundColor(type: CardType) {
     const map = {
-    income: 'rgb(175, 249, 175)',   // verde claro
-    expense: 'rgb(251, 201, 201)',  // vermelho claro
-    balance: 'rgb(180, 236, 255)',  // azul claro
-    count: '#e2e3e5'     // cinza claro
+    income: 'rgb(175, 249, 175)',
+    expense: 'rgb(251, 201, 201)',
+    balance: 'rgb(180, 236, 255)',
+    count: 'rgb(180, 236, 255)'
   };
     return map[type];
 }
     colorText(type: CardType) {
     const map = {
-    income: 'green',   // verde claro
-    expense: 'red',  // vermelho claro
-    balance: 'blue',  // azul claro
-    count: '#e2e3e5'     // cinza claro
+    income: 'green',
+    expense: 'red',
+    balance: 'blue',
+    count: 'blue'
   };
     return map[type];
   }

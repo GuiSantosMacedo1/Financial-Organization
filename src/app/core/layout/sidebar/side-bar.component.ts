@@ -35,7 +35,6 @@ export class SideBar implements OnInit{
 
   onMenuClick(route: string): void {
     this.router.navigate([route]);
-    console.log('Fui clicado, meu route é ', route)
   }
   
   private updateActiveMenuFromRoute(url: string): void {

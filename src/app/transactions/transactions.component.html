@@ -30,9 +30,12 @@
       <app-cards [configs]="[
         { type: 'income'},
         { type: 'expense'},
-        { type: 'balance'}
+        { type: 'count'}
       ]">
       </app-cards>
+    </div>
+    <div class="transactions px-5">
+      <app-recent-transactions></app-recent-transactions>
     </div>
 </div>
 <app-modal-transactions [isOpen]="activeModal" (close)="activeModal = false"></app-modal-transactions>

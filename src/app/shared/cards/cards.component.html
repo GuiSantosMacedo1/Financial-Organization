@@ -1,5 +1,5 @@
-<div class="cards px-5 row">
-  <div *ngFor="let c of configs" class="card-item col border rounded me-3 p-3" style="background-color: rgb(255, 255, 255);">
+<div class="cards row gap-4 gx-0 gy-3 px-5">
+  <div *ngFor="let c of configs" class="card-item col border rounded p-3" style="background-color: rgb(255, 255, 255);">
     <div class="card-top d-flex justify-content-left align-items-center">
       <div class="card-icon border p-2 rounded" [ngStyle]="{'background-color': backGroundColor(c.type)}">
         <i [ngStyle]="{'color': colorText(c.type)}" [class]="iconByType(c.type)"></i>
@@ -16,6 +16,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
