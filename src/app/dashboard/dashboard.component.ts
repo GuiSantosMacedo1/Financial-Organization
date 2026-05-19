@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { CardsComponent } from './components/cards/cards.component';
-import { TransactionsComponent } from "./components/transactions/transactions.component";
+import { TransactionsComponent } from "../shared/transactions/transactions.component";
 import { ModalTransactionsComponent } from '../shared/modal-transactions/modal-transactions.component';
 import { SideBar } from "../core/layout/sidebar/side-bar.component";
 
