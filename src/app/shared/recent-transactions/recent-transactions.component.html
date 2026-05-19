@@ -39,7 +39,7 @@
     <div style="color: rgb(78, 78, 78);" class="row fw-bold">
       <div class="col">Transação</div>
       <div style="width: 10%;" class="col-1">Categoria</div>
-      <div class="col">Data</div>
+      <div class="col d-flex justify-content-center">Data</div>
       <div class="col">Valor</div>
       <div class="col text-center">Ações</div>
     </div>
@@ -49,9 +49,13 @@
       *ngFor="let transaction of transactions"
       class="row align-items-center p-3 border-bottom"
     >
-      <div class="col"> {{ transaction.description }} </div>
+      <div style="font-size: 0.9rem; gap: 10px;"class="col d-flex align-items-center"> 
+        <div class="border rounded p-2" [ngClass]="transaction.amount > 0 ? 'bg-success-subtle' : 'bg-danger-subtle'">
+          <i class="fas" [ngClass]="transaction.amount > 0 ? 'fa-arrow-up text-success' : 'fa-arrow-down text-danger'"></i>
+        </div>
+        {{ transaction.description }} </div>
       <div style="width: 10%;" class="col-1 badge text-bg-secondary "> {{ transaction.category }} </div>
-      <div class="col">  {{ transaction.date | date:'dd/MM/yyyy' }} </div>
+      <div class="col d-flex justify-content-center">  {{ transaction.date | date:'dd/MM/yyyy' }} </div>
       <div
         class="col fw-bold"
         [class.text-success]="transaction.amount > 0"
