@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './recent-transactions.component.html',
   styleUrl: './recent-transactions.component.scss'
 })
-export class RecentTransactionsComponent {
+export class RecentTransactionsComponent implements OnInit {
   @Input() activeTodos: boolean = false;
   transactions: any[] = [];
   
@@ -20,7 +20,10 @@ export class RecentTransactionsComponent {
   ) {}
   ngOnInit(): void {
     this.transactionsService.getTransactions().subscribe((response: any) => {
-      this.transactions = response.data || [];
+      const items = response?.data ?? response ?? [];
+      this.transactions = items.slice().sort((a: any, b: any) =>
+          new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
       this.transactionsByCategory();
     });
   }
