@@ -7,7 +7,7 @@
   </div>
   <p *ngIf="!activeTodos" class="fw-bold">Todas as Transações</p>
   <div
-    *ngFor="let transaction of transactions"
+    *ngFor="let transaction of (activeTodos ? (transactions | slice:0:3) : transactions)"
     class="border rounded mb-3 mt-2 bg-light"
   >
     <div class="transaction-item d-flex justify-content-between align-items-center py-3">
