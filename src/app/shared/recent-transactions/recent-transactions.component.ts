@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { TransactionsService } from '../../core/services/transactions.service';
   styleUrl: './recent-transactions.component.scss'
 })
 export class RecentTransactionsComponent {
+  @Input()activeTodos: boolean = false;
   transactions: any[] = [];
   
   constructor(private transactionsService: TransactionsService) {}

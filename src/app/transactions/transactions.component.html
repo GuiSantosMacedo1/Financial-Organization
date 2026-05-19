@@ -35,7 +35,7 @@
       </app-cards>
     </div>
     <div class="transactions px-5 mt-3">
-      <app-recent-transactions></app-recent-transactions>
+      <app-recent-transactions [activeTodos]="false"></app-recent-transactions>
     </div>
 </div>
 <app-modal-transactions [isOpen]="activeModal" (close)="activeModal = false"></app-modal-transactions>
