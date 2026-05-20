@@ -2,17 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { Router } from '@angular/router';
+import { EditTransactionsComponent } from '../edit-transactions/edit-transactions.component';
 
 @Component({
   selector: 'app-recent-transactions',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EditTransactionsComponent],
   templateUrl: './recent-transactions.component.html',
   styleUrl: './recent-transactions.component.scss'
 })
 export class RecentTransactionsComponent implements OnInit {
   @Input() activeTodos: boolean = false;
   transactions: any[] = [];
+  activeModalEdit: any = true;
   
   constructor(
     private transactionsService: TransactionsService,

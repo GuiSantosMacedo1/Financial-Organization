@@ -64,7 +64,7 @@
         {{ transaction.amount | currency:'BRL' }}
       </div>
       <div class="col text-center">
-        <button class="btn btn-sm btn-outline-primary me-2">
+        <button class="btn btn-sm btn-outline-primary me-2" (click)="activeModalEdit = true">
           Editar
         </button>
         <button class="btn btn-sm btn-outline-danger">
@@ -74,4 +74,5 @@
     </div>
   </div>
 </div>
+<app-edit-transactions [isOpen]="activeModalEdit" (close)="activeModalEdit= false"></app-edit-transactions>
 </div>

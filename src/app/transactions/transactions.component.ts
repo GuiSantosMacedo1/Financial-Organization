@@ -5,16 +5,18 @@ import { NgFor } from '@angular/common';
 import { TransactionsService } from '../core/services/transactions.service';
 import { CardsComponent } from "../shared/cards/cards.component";
 import { RecentTransactionsComponent } from '../shared/recent-transactions/recent-transactions.component';
+import { EditTransactionsComponent } from "../shared/edit-transactions/edit-transactions.component";
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [SideBar, ModalTransactionsComponent, NgFor, CardsComponent, RecentTransactionsComponent],
+  imports: [SideBar, ModalTransactionsComponent, NgFor, CardsComponent, RecentTransactionsComponent, EditTransactionsComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })
 export class TransactionsComponent {
   activeModal = false
+  activeModalEdit = false
 
   transactions: any[] = [];
   categories: string[] = [];

@@ -1,12 +1,43 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { TransactionsService } from '../../core/services/transactions.service';
 
 @Component({
   selector: 'app-edit-transactions',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './edit-transactions.component.html',
   styleUrl: './edit-transactions.component.scss'
 })
 export class EditTransactionsComponent {
+  @Input() isOpen: boolean = true;
+  @Input() transaction: any = null;
+  @Output() saved = new EventEmitter<void>()
+  @Output() closed = new EventEmitter<void>()
 
+  constructor(private transactionsService: TransactionsService){}
+    
+  closeModal() {
+    this.closed.emit()
+  }
+
+  editTransactions(){
+    if(!this.transaction?._id) return;
+
+    const payload = {
+      category: this.transaction.category,
+      description: this.transaction.description,
+      amount: this.transaction.amount,
+      date: this.transaction.date,
+      type: this.transaction.type
+    };
+
+    this.transactionsService.putTransactions(this.transaction._id, payload).subscribe({
+      next: () => {
+        this.saved.emit();
+        this.closeModal();
+      }
+    })
+  }
 }
