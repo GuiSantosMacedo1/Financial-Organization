@@ -11,20 +11,27 @@ import { TransactionsService } from '../../core/services/transactions.service';
   styleUrl: './edit-transactions.component.scss'
 })
 export class EditTransactionsComponent {
-  @Input() isOpen: boolean = true;
-  @Input() transaction: any = null;
+  @Input() isOpen: boolean = false;
   @Output() saved = new EventEmitter<void>()
   @Output() closed = new EventEmitter<void>()
-
+  
+  transaction = {
+    _id: '',
+    description: '',
+    amount: 0,
+    date: '',
+    type: 'income',
+    category: ''
+  };
   constructor(private transactionsService: TransactionsService){}
-    
+  
   closeModal() {
     this.closed.emit()
   }
-
+  
   editTransactions(){
     if(!this.transaction?._id) return;
-
+    
     const payload = {
       category: this.transaction.category,
       description: this.transaction.description,
@@ -32,12 +39,13 @@ export class EditTransactionsComponent {
       date: this.transaction.date,
       type: this.transaction.type
     };
-
+    
     this.transactionsService.putTransactions(this.transaction._id, payload).subscribe({
       next: () => {
         this.saved.emit();
         this.closeModal();
       }
     })
+    console.log("🚀 ~ EditTransactionsComponent ~ editTransactions ~ editTransactions:", this.editTransactions)
   }
 }

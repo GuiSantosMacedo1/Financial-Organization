@@ -14,7 +14,7 @@ import { EditTransactionsComponent } from '../edit-transactions/edit-transaction
 export class RecentTransactionsComponent implements OnInit {
   @Input() activeTodos: boolean = false;
   transactions: any[] = [];
-  activeModalEdit: any = true;
+  activeModalEdit: any = false;
   
   constructor(
     private transactionsService: TransactionsService,
