@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TransactionsService } from '../../core/services/transactions.service';
 
@@ -12,18 +12,36 @@ import { TransactionsService } from '../../core/services/transactions.service';
 })
 export class EditTransactionsComponent {
   @Input() isOpen: boolean = false;
+  @Input() transaction: any = null
   @Output() saved = new EventEmitter<void>()
   @Output() closed = new EventEmitter<void>()
-  
-  transaction = {
+
+  localTransaction: any = {
     _id: '',
     description: '',
     amount: 0,
     date: '',
     type: 'income',
     category: ''
-  };
+  }
+
   constructor(private transactionsService: TransactionsService){}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['transaction'] && this.transaction) {
+      this.localTransaction = { ...this.transaction }
+    }
+    if(changes['isOpen'] && !this.isOpen) {
+      this.localTransaction = {
+        _id: '',
+        description: '',
+        amount: 0,
+        date: '',
+        type: 'income',
+        category: ''
+      }
+    }
+  }
   
   closeModal() {
     this.closed.emit()

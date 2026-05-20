@@ -16,7 +16,7 @@
             id="description" 
             name="description" 
             required 
-            [(ngModel)]="transaction.description"
+            [(ngModel)]="localTransaction.description"
           />
         </div>
         <div class="form-group mb-3">
@@ -27,7 +27,7 @@
             id="amount" 
             name="amount" 
             required 
-            [(ngModel)]="transaction.amount"
+            [(ngModel)]="localTransaction.amount"
           />
         </div>
         <div class="form-group">
@@ -41,7 +41,7 @@
                 name="type" 
                 value="income" 
                 required
-                [(ngModel)]="transaction.type" 
+                [(ngModel)]="localTransaction.type" 
               />
               <label for="type-income" class="mb-0" style="color: green;">Entrada</label>
               <input 
@@ -51,7 +51,7 @@
                 name="type" 
                 value="expense" 
                 required
-                [(ngModel)]="transaction.type" 
+                [(ngModel)]="localTransaction.type" 
               />
               <label for="type-expense" class="mb-0" style="color: red;">Saída</label>
             </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group mb-3">
           <label for="category" class="form-label">Categoria</label>
-          <select class="form-control" id="category" name="category" required [(ngModel)]="transaction.category">
+          <select class="form-control" id="category" name="category" required [(ngModel)]="localTransaction.category">
             <option value="">Selecione uma categoria</option>
             <option value="Alimentacao">Alimentação</option>
             <option value="Transporte">Transporte</option>
@@ -69,7 +69,7 @@
         </div>
         <div class="form-group mb-3">
           <label for="date" class="form-label">Data</label>
-          <input type="date" class="form-control" id="date" name="date" required [(ngModel)]="transaction.date" />
+          <input type="date" class="form-control" id="date" name="date" required [(ngModel)]="localTransaction.date" />
         </div>
         <div class="modal-footer d-flex justify-content-end gap-2">
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>

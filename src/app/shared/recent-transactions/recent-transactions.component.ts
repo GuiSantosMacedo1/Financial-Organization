@@ -14,6 +14,7 @@ import { EditTransactionsComponent } from '../edit-transactions/edit-transaction
 export class RecentTransactionsComponent implements OnInit {
   @Input() activeTodos: boolean = false;
   transactions: any[] = [];
+  selectedTransaction: any = null
   activeModalEdit: any = false;
   
   constructor(
@@ -28,6 +29,11 @@ export class RecentTransactionsComponent implements OnInit {
         );
       this.transactionsByCategory();
     });
+  }
+
+  openModalEdit(transaction: any){
+    this.selectedTransaction = transaction
+    this.activeModalEdit = true
   }
 
   routeTransactions(): void{
