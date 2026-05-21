@@ -3,11 +3,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { Router } from '@angular/router';
 import { EditTransactionsComponent } from '../edit-transactions/edit-transactions.component';
+import { DeleteTransactionsComponent } from "../delete-transactions/delete-transactions.component";
 
 @Component({
   selector: 'app-recent-transactions',
   standalone: true,
-  imports: [CommonModule, EditTransactionsComponent],
+  imports: [CommonModule, EditTransactionsComponent, DeleteTransactionsComponent],
   templateUrl: './recent-transactions.component.html',
   styleUrl: './recent-transactions.component.scss'
 })
@@ -16,6 +17,7 @@ export class RecentTransactionsComponent implements OnInit {
   transactions: any[] = [];
   selectedTransaction: any = null
   activeModalEdit: any = false;
+  activeModalDelete: any = false;
   
   constructor(
     private transactionsService: TransactionsService,
@@ -34,6 +36,9 @@ export class RecentTransactionsComponent implements OnInit {
   openModalEdit(transaction: any){
     this.selectedTransaction = transaction
     this.activeModalEdit = true
+  }
+  openModalDelete(){
+    this.activeModalDelete = true
   }
 
   routeTransactions(): void{
