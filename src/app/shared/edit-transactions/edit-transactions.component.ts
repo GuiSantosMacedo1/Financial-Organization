@@ -31,7 +31,10 @@ export class EditTransactionsComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['transaction'] && this.transaction) {
-      this.localTransaction = { ...this.transaction }
+      this.localTransaction = { 
+        ...this.transaction,
+        date: this.transaction.date?.split('T')[0] 
+      }
     }
   }
   
