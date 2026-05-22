@@ -37,7 +37,15 @@ export class DeleteTransactionsComponent {
       }
     }
   closeModal() {
-    this.closed.emit()
+    this.closed.emit();
+    this.localTransaction = {
+    _id: '',
+    description: '',
+    amount: '',
+    date: '',
+    type: 'income',
+    category: ''
+  }
   }
   
   deleteModal(){
