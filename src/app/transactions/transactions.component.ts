@@ -10,7 +10,7 @@ import { EditTransactionsComponent } from "../shared/edit-transactions/edit-tran
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [SideBar, ModalTransactionsComponent, NgFor, CardsComponent, RecentTransactionsComponent, EditTransactionsComponent],
+  imports: [SideBar, ModalTransactionsComponent, NgFor, CardsComponent, RecentTransactionsComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })

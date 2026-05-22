@@ -67,7 +67,7 @@
         <button class="btn btn-sm btn-outline-primary me-2" (click)="openModalEdit(transaction)">
           Editar
         </button>
-        <button class="btn btn-sm btn-outline-danger" (click)="openModalDelete()">
+        <button class="btn btn-sm btn-outline-danger" (click)="openModalDelete(transaction)">
           Excluir
         </button>
       </div>
@@ -75,5 +75,5 @@
   </div>
 </div>
 <app-edit-transactions [isOpen]="activeModalEdit" [transaction]="selectedTransaction" (closed)="activeModalEdit= false"></app-edit-transactions>
-<app-delete-transactions [isOpen]="activeModalDelete" (closed)="activeModalDelete= false"></app-delete-transactions>
+<app-delete-transactions [isOpen]="activeModalDelete"[transaction]="selectedTransaction" (closed)="activeModalDelete= false"></app-delete-transactions>
 </div>

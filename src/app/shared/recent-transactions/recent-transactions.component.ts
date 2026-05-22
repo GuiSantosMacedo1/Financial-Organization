@@ -37,7 +37,8 @@ export class RecentTransactionsComponent implements OnInit {
     this.selectedTransaction = transaction
     this.activeModalEdit = true
   }
-  openModalDelete(){
+  openModalDelete(transaction: any){
+    this.selectedTransaction = transaction
     this.activeModalDelete = true
   }
 

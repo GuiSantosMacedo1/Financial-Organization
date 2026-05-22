@@ -18,4 +18,7 @@ export class TransactionsService {
   putTransactions(id:string, data:any): Observable<any>{
     return this.http.put(`${this.apiUrl}/${id}`, data);
   }
+  deleteTransactions(id:string): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
 }
