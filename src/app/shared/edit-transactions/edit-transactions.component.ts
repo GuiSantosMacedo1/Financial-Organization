@@ -68,6 +68,7 @@ export class EditTransactionsComponent {
     
     this.transactionsService.putTransactions(this.localTransaction._id, payload).subscribe({
       next: () => {
+        this.transactionsService.notifyTransactionsChanged();
         this.saved.emit();
         this.closeModal();
       } 

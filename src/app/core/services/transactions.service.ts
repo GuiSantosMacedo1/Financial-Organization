@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsService {
   private apiUrl = 'http://localhost:3000/api/transactions';
+  private transactionsChangedSubject = new Subject<void>();
+  transactionsChanged$ = this.transactionsChangedSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +23,8 @@ export class TransactionsService {
   }
   deleteTransactions(id:string): Observable<any>{
     return this.http.delete(`${this.apiUrl}/${id}`)
+  }
+  notifyTransactionsChanged(): void {
+    this.transactionsChangedSubject.next();
   }
 }

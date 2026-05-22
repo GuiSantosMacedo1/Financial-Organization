@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { CommonModule } from '@angular/common';
 
@@ -24,10 +24,21 @@ export class CardsComponent {
 
   transactions: any[] = [];
   totals = { income: 0, expense: 0, balance: 0, count: 0 };
+  transactionsChangedSubscription: any = null
 
   constructor(private transactionsService: TransactionsService) {
 }
   ngOnInit(): void {
+    this.loadCard();
+    this.transactionsChangedSubscription = this.transactionsService.transactionsChanged$.subscribe(() => {
+      this.loadCard();
+    });
+  }
+  OnDestroy(): void{
+    this.transactionsChangedSubscription?.unsubscribe();
+  }
+
+  private loadCard(): void{
     this.transactionsService.getTransactions().subscribe((response: any) => {
       this.transactions = response.data || [];
       this.calculateTotals();

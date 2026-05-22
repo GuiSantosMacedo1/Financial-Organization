@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { Router } from '@angular/router';
 import { EditTransactionsComponent } from '../edit-transactions/edit-transactions.component';
@@ -12,18 +12,30 @@ import { DeleteTransactionsComponent } from "../delete-transactions/delete-trans
   templateUrl: './recent-transactions.component.html',
   styleUrl: './recent-transactions.component.scss'
 })
-export class RecentTransactionsComponent implements OnInit {
+export class RecentTransactionsComponent implements OnInit, OnDestroy {
   @Input() activeTodos: boolean = false;
   transactions: any[] = [];
   selectedTransaction: any = null
   activeModalEdit: any = false;
   activeModalDelete: any = false;
+  private transactionsChangedSubscription: any;
   
   constructor(
     private transactionsService: TransactionsService,
     private router: Router
   ) {}
   ngOnInit(): void {
+    this.loadTransactions();
+    this.transactionsChangedSubscription = this.transactionsService.transactionsChanged$.subscribe(() => {
+      this.loadTransactions();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.transactionsChangedSubscription?.unsubscribe();
+  }
+
+  loadTransactions(): void {
     this.transactionsService.getTransactions().subscribe((response: any) => {
       const items = response?.data ?? response ?? [];
       this.transactions = items.slice().sort((a: any, b: any) =>

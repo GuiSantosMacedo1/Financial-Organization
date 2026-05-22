@@ -43,6 +43,7 @@ export class ModalTransactionsComponent {
     }
 
     this.transactionsService.postTransactions(transactionData).subscribe(response => {
+      this.transactionsService.notifyTransactionsChanged();
       this.transactionsCreate.emit(response);
       this.isLoading = false;
       this.closeModal();

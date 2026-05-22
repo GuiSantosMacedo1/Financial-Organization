@@ -55,6 +55,7 @@ export class DeleteTransactionsComponent {
     }
     this.transactionService.deleteTransactions(this.transaction?._id).subscribe({
       next: () => {
+        this.transactionService.notifyTransactionsChanged();
         this.deleted.emit();
         this.closed.emit();
       }
