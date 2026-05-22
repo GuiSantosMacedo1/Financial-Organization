@@ -16,7 +16,7 @@ export class EditTransactionsComponent {
   @Input() transaction: any = null
   @Output() saved = new EventEmitter<void>()
   @Output() closed = new EventEmitter<void>()
-
+  
   errorMessage:any = null
   localTransaction: any = {
     _id: '',
@@ -26,9 +26,9 @@ export class EditTransactionsComponent {
     type: 'income',
     category: ''
   }
-
+  
   constructor(private transactionsService: TransactionsService){}
-
+  
   ngOnChanges(changes: SimpleChanges) {
     if(changes['transaction'] && this.transaction) {
       this.localTransaction = { 
@@ -41,14 +41,13 @@ export class EditTransactionsComponent {
   closeModal() {
     this.closed.emit()
   }
-
-    validateForm(): boolean {
-    if (!this.localTransaction.description || this.localTransaction.amount <= 0 || !this.localTransaction.type) {
+  validateForm(): boolean {
+    if (!this.localTransaction.description || this.localTransaction.amount == 0 || !this.localTransaction.type) {
       return false;
     }
     return true;
   }
-
+  
   editTransactions(){
     if(!this.localTransaction?._id){
       this.errorMessage = 'Erro ao encontrar o ID'
@@ -56,6 +55,7 @@ export class EditTransactionsComponent {
     }
     if(!this.validateForm()){
       this.errorMessage = 'Precisa preencher todos os campos'
+      // console.log("🚀 ~ EditTransactionsComponent ~ localTransaction:", this.localTransaction)
       return
     }
     const payload = {
