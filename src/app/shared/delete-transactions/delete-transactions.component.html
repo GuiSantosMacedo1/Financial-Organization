@@ -7,11 +7,86 @@
       </div>
     <div class="modal-body">
       <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <form>
         <div class="form-group mb-3">
-        <div class="modal-footer d-flex justify-content-end gap-2">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
-          <button type="submit" class="btn btn-primary" (click)="deleteModal()">Excluir</button>
+          <label for="description" class="form-label">Descrição</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="description" 
+            name="description" 
+            required
+            disabled
+            [(ngModel)]="localTransaction.description"
+          />
         </div>
+        <div class="form-group mb-3">
+          <label class="form-label"> Valor</label>
+          <div class="input-group">
+            <input
+              currencyMask
+              name="amount"
+              class="form-control text-start"
+              disabled
+              [(ngModel)]="localTransaction.amount"
+              [options]="{
+                prefix: '',
+                thousands: '.',
+                decimal: ',',
+                precision: 2
+              }"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="type" class="form-label">Tipo</label>
+          <div class="radio-group">
+            <div class="radio-option d-flex align-items-center gap-2">
+              <input 
+                type="radio" 
+                class="radio d-flex" 
+                id="type-income" 
+                name="type" 
+                value="income" 
+                required
+                disabled
+                [(ngModel)]="localTransaction.type" 
+              />
+              <label for="type-income" class="mb-0" style="color: green;">Entrada</label>
+              <input 
+                type="radio" 
+                class="radio d-flex" 
+                id="type-expense" 
+                name="type" 
+                value="expense" 
+                required
+                disabled
+                [(ngModel)]="localTransaction.type" 
+              />
+              <label for="type-expense" class="mb-0" style="color: red;">Saída</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="category" class="form-label">Categoria</label>
+          <select class="form-control" id="category" name="category" required disabled [(ngModel)]="localTransaction.category">
+            <option value="">Selecione uma categoria</option>
+            <option value="Alimentacao">Alimentação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saude">Saúde</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="date" class="form-label">Data</label>
+          <input type="date" class="form-control" id="date" name="date" required disabled [(ngModel)]="localTransaction.date" />
+        </div>
+          <div class="modal-footer d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary" (click)="deleteModal()">Excluir</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+    </div>
 </div>
