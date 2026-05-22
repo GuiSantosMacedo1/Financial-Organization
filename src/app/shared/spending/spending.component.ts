@@ -43,7 +43,7 @@ export class SpendingComponent implements OnInit {
   
   getIconsByCategory(category: string): string {
     switch (category) {
-      case 'Alimentação': return 'fa-utensils';
+      case 'Alimentacao': return 'fa-utensils';
       case 'Trabalho': return 'fa-briefcase';
       case 'Lazer': return 'fa-film';
       case 'Transporte': return 'fa-car';
@@ -54,7 +54,7 @@ export class SpendingComponent implements OnInit {
   }
   getCategoryColor(category: string): string {
     switch (category) {
-      case 'Alimentação': return 'bg-success';
+      case 'Alimentacao': return 'bg-success';
       case 'Trabalho': return 'bg-primary';
       case 'Lazer': return 'bg-danger';
       case 'Transporte': return 'bg-warning';
