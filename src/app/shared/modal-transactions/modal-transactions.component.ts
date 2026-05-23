@@ -2,11 +2,12 @@ import { Component, Input, Output, EventEmitter, NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { TransactionsService } from '../../core/services/transactions.service';
 import { FormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @Component({
   selector: 'app-modal-transactions',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CurrencyMaskModule],
   templateUrl: './modal-transactions.component.html',
   styleUrls: ['./modal-transactions.component.scss']
 })
