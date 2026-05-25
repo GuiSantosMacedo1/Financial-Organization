@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionsService {
-  private apiUrl = 'http://localhost:3000/api/transactions';
+  private apiUrl = 'https://financial-organization-backend.onrender.com/api/transactions';
   private transactionsChangedSubject = new Subject<void>();
   transactionsChanged$ = this.transactionsChangedSubject.asObservable();
 
