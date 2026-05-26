@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TransactionsService } from '../../core/services/transactions.service';
 
 @Component({
@@ -9,18 +9,12 @@ import { TransactionsService } from '../../core/services/transactions.service';
   templateUrl: './spending.component.html',
   styleUrl: './spending.component.scss'
 })
-export class SpendingComponent implements OnInit {
-  
-  transactions: any[] = [];
+export class SpendingComponent {
+  @Input() transactions: any[] = [];
   categories: any[] = []
-  
-  constructor(private transactionsService: TransactionsService) {}
-  
-  ngOnInit(): void {
-    this.transactionsService.getTransactions().subscribe((res) => {
-      this.transactions = res.data || [];
-      this.transactionsByCategory();
-    })
+
+  ngOnChanges() {
+    this.transactionsByCategory();
   }
   
   transactionsByCategory() {

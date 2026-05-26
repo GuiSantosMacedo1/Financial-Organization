@@ -12,38 +12,23 @@ import { DeleteTransactionsComponent } from "../delete-transactions/delete-trans
   templateUrl: './recent-transactions.component.html',
   styleUrl: './recent-transactions.component.scss'
 })
-export class RecentTransactionsComponent implements OnInit, OnDestroy {
+export class RecentTransactionsComponent {
   @Input() activeTodos: boolean = false;
-  transactions: any[] = [];
+  @Input() transactions: any[] = [];
   selectedTransaction: any = null
   activeModalEdit: any = false;
   activeModalDelete: any = false;
-  private transactionsChangedSubscription: any;
   
-  constructor(
-    private transactionsService: TransactionsService,
-    private router: Router
-  ) {}
-  ngOnInit(): void {
-    this.loadTransactions();
-    this.transactionsChangedSubscription = this.transactionsService.transactionsChanged$.subscribe(() => {
-      this.loadTransactions();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.transactionsChangedSubscription?.unsubscribe();
-  }
-
-  loadTransactions(): void {
-    this.transactionsService.getTransactions().subscribe((response: any) => {
-      const items = response?.data ?? response ?? [];
-      this.transactions = items.slice().sort((a: any, b: any) =>
-          new Date(b.date).getTime() - new Date(a.date).getTime()
+  constructor( private router: Router ) {}
+    ngOnChanges(): void {
+      this.transactions = this.transactions
+        .slice()
+        .sort((a, b) =>
+          new Date(b.date).getTime() -
+          new Date(a.date).getTime()
         );
       this.transactionsByCategory();
-    });
-  }
+    }
 
   openModalEdit(transaction: any){
     this.selectedTransaction = transaction

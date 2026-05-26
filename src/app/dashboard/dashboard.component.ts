@@ -5,6 +5,8 @@ import { RecentTransactionsComponent } from "../shared/recent-transactions/recen
 import { ModalTransactionsComponent } from '../shared/modal-transactions/modal-transactions.component';
 import { SideBar } from "../core/layout/sidebar/side-bar.component";
 import { SpendingComponent } from "../shared/spending/spending.component";
+import { TransactionsService } from '../core/services/transactions.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,4 +17,21 @@ import { SpendingComponent } from "../shared/spending/spending.component";
 })
 export class DashboardComponent {
   activeModal: boolean = false;
+  transactions: [] = [];
+
+  constructor(private transactionsService: TransactionsService){}
+  ngOnInit() {
+      this.loadTransactions();
+      this.transactionsService.transactionsChanged$.pipe(takeUntilDestroyed()).subscribe(() => {
+          this.loadTransactions();
+        });
+    }
+
+  loadTransactions() {
+    this.transactionsService.getTransactions().subscribe((response: any) => {
+        const items =
+          response?.data ?? [];
+        this.transactions = items;
+      });
+  }
 }
