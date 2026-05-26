@@ -20,10 +20,17 @@ export class TransactionsComponent {
 
   transactions: any[] = [];
   categories: string[] = [];
+  transactionsChangedSubscription: any = null
 
   constructor(private transactionsService: TransactionsService) {}
 
   ngOnInit(): void {
+    this.loadTransaction();
+    this.transactionsChangedSubscription = this.transactionsService.transactionsChanged$.subscribe(() => {
+      this.loadTransaction();
+    });
+  }
+  loadTransaction(){
     this.transactionsService.getTransactions().subscribe((response: any) => {
       this.transactions = response.data || [];
       this.categories = [...new Set(this.transactions.map(transaction => transaction.category).filter(Boolean))];

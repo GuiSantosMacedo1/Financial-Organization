@@ -27,7 +27,7 @@
     </div>
     </div>
     <div class="cards mt-3">
-      <app-cards [configs]="[
+      <app-cards [transactions]="transactions" [configs]="[
         { type: 'income'},
         { type: 'expense'},
         { type: 'count'}
@@ -35,7 +35,7 @@
       </app-cards>
     </div>
     <div class="transactions px-5 mt-3">
-      <app-recent-transactions [activeTodos]="false"></app-recent-transactions>
+      <app-recent-transactions [transactions]="transactions" [activeTodos]="false"></app-recent-transactions>
     </div>
 </div>
 <app-modal-transactions [isOpen]="activeModal" (close)="activeModal = false"></app-modal-transactions>

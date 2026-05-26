@@ -20,29 +20,12 @@ export interface CardConfig {
 })
 export class CardsComponent {
   @Input() configs: CardConfig[] = []
-  @Input() small = false
+  @Input() transactions: any[] = [];
 
-  transactions: any[] = [];
   totals = { income: 0, expense: 0, balance: 0, count: 0 };
-  transactionsChangedSubscription: any = null
 
-  constructor(private transactionsService: TransactionsService) {
-}
-  ngOnInit(): void {
-    this.loadCard();
-    this.transactionsChangedSubscription = this.transactionsService.transactionsChanged$.subscribe(() => {
-      this.loadCard();
-    });
-  }
-  OnDestroy(): void{
-    this.transactionsChangedSubscription?.unsubscribe();
-  }
-
-  private loadCard(): void{
-    this.transactionsService.getTransactions().subscribe((response: any) => {
-      this.transactions = response.data || [];
-      this.calculateTotals();
-    });
+  ngOnChanges() {
+    this.calculateTotals();
   }
 
   private calculateTotals() {
