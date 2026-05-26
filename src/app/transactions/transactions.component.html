@@ -13,21 +13,21 @@
   </div>
   <div class="fil px-5 g-3">
     <div class=" d-flex border rounded" style="gap: 10px; padding: 16px; background-color: white;">
-      <input class="" placeholder="Buscar Transação" type="text" style="font-size: 0.9rem;">
-      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;">
-        <option selected>Todos</option>
-        <option value="1">Receitas</option>
-        <option value="2">Despesas</option>
+      <input class="" placeholder="Buscar Transação" type="text" style="font-size: 0.9rem;" [(ngModel)]="searchTerm">
+      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;" [(ngModel)]="searchType">
+        <option value="">Todos</option>
+        <option value="income">Receitas</option>
+        <option value="expense">Despesas</option>
       </select>
-      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;">
-        <option selected>Todos as Categorias</option>
+      <select class = "" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;" [(ngModel)]="searchCategory">
+        <option value="">Todas as Categorias</option>
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
-      <button  class="btn btn-secondary btn-sm" style="width: 60%;">Limpar filtros</button>
+      <button type="button" class="btn btn-secondary btn-sm" style="width: 60%;" (click)="searchTerm = ''; searchType = ''; searchCategory = ''">Limpar filtros</button>
     </div>
     </div>
     <div class="cards mt-3">
-      <app-cards [transactions]="transactions" [configs]="[
+      <app-cards [transactions]="filteredTransactions" [configs]="[
         { type: 'income'},
         { type: 'expense'},
         { type: 'count'}
@@ -35,7 +35,7 @@
       </app-cards>
     </div>
     <div class="transactions px-5 mt-3">
-      <app-recent-transactions [transactions]="transactions" [activeTodos]="false"></app-recent-transactions>
+      <app-recent-transactions [transactions]="filteredTransactions" [activeTodos]="false"></app-recent-transactions>
     </div>
 </div>
 <app-modal-transactions [isOpen]="activeModal" (close)="activeModal = false"></app-modal-transactions>
