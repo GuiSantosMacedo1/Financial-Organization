@@ -29,6 +29,10 @@ export class LoginComponent {
     this.errorMessage = '';
 
     this.loginService.loginUser(this.login).subscribe(response => {
+      const token = response?.token ?? response?.data?.token;
+      if (token) {
+        localStorage.setItem('token', token);
+      }
       this.userCreate.emit(response);
       this.route.navigate(['/dashboard'])
     }, error => {
