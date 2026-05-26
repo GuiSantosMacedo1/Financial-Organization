@@ -18,7 +18,6 @@ export class SideBar implements OnInit{
   menuItems = [
     { name: 'Dashboard', tab: 'dashboard', route: '/dashboard' },
     { name: 'Transactions', tab: 'transactions', route: '/transactions' },
-    { name: 'Budgets', tab: 'budgets', route: '/budgets' },
     { name: 'Metas', tab: 'metas', route: '/metas' },
     { name: 'Settings', tab: 'settings', route: '/settings' }
   ]

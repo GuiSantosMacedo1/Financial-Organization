@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { TransactionsService } from '../../core/services/transactions.service';
 import { CommonModule } from '@angular/common';
 
 export type CardType = 'income' | 'expense' | 'balance' | 'count';
