@@ -1,0 +1,30 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm p-4" style="min-width: 320px; max-width: 420px; width: 100%;">
+    <div class="text-center mb-4">
+      <h2 class="mb-1">Login</h2>
+      <p class="text-muted mb-0">Adicione informações para se registrar</p>
+    </div>
+
+    <form (ngSubmit)="createUsers()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome</label>
+        <input id="name" name="name" [(ngModel)]="createUser.name" type="name" class="form-control" placeholder="Digite aqui seu nome">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" name="email" [(ngModel)]="createUser.email" type="email" class="form-control" placeholder="Digite aqui seu email">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Senha</label>
+        <input id="password" name="password" [(ngModel)]="createUser.password" type="password" class="form-control" placeholder="Digite sua senha">
+      </div>
+
+      <div *ngIf="errorMessage" class="mb-3 text-danger">{{ errorMessage }}</div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Criar</button>
+      </div>
+    </form>
+  </div>
+</div>
