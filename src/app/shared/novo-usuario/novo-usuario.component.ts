@@ -1,36 +1,37 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { LoginService } from '../../core/services/login.service';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from '../core/services/login.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-novo-usuario',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './novo-usuario.component.html',
+  styleUrl: './novo-usuario.component.scss'
 })
-export class LoginComponent {
+export class NovoUsuarioComponent {
   @Output() userCreate = new EventEmitter<any>()
   constructor(private loginService: LoginService, private route: Router){}
 
   errorMessage = ''
-  login = {
+  createUser = {
+    name: '',
     email: '',
     password: ''
   }
 
-  userLogin() {
+  createUsers() {
     if(!this.validateForm()){
       this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
       return;
     }
     this.errorMessage = '';
 
-    this.loginService.loginUser(this.login).subscribe(response => {
+    this.loginService.postUser(this.createUser).subscribe(response => {
       this.userCreate.emit(response);
-      this.route.navigate(['/dashboard'])
+      this.route.navigate(['/login'])
     }, error => {
       this.errorMessage = 'Erro ao logar'
       console.error('Erro ao logar', error)
@@ -38,12 +39,8 @@ export class LoginComponent {
     
   }
 
-  toggleRegister() {
-    this.route.navigate(['/novoUsuario'])
-  }
-
     validateForm(): boolean {
-    if (!this.login.email || !this.login.password) {
+    if (!this.createUser.email || !this.createUser.password) {
       return false;
     }
     return true;
