@@ -1,27 +1,131 @@
-# FinancialOrganization
+# Financial Organization
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Aplicação Front-end para organização financeira pessoal, desenvolvida com foco em experiência do usuário, gerenciamento de estado e componentização.
 
-## Development server
+O projeto permite controlar receitas, despesas e metas financeiras através de uma interface moderna, responsiva e intuitiva.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Deploy
 
-## Code scaffolding
+https://financial-organization-ashen.vercel.app/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+# 🛠️ Tecnologias Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* React
+* TypeScript
+* JavaScript
+* HTML
+* CSS
+* APIs REST
+* Git
+* Vercel
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# ✨ Funcionalidades
 
-## Running end-to-end tests
+## 💰 Controle Financeiro
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* Cadastro de receitas e despesas
+* Organização de transações
+* Visualização de saldo
 
-## Further help
+## 📊 Dashboard
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Visualização de informações financeiras
+* Interface responsiva
+* Componentização de telas e elementos
+
+## 🎯 Metas Financeiras
+
+* Criação de metas
+* Acompanhamento de progresso
+* Organização de objetivos financeiros
+
+---
+
+# 📱 Responsividade
+
+A aplicação foi desenvolvida para funcionar em diferentes dispositivos:
+
+* Desktop
+* Tablet
+* Mobile
+
+---
+
+# 🎨 Objetivo do Projeto
+
+Este projeto foi desenvolvido com o objetivo de praticar conceitos modernos de desenvolvimento Front-end, incluindo:
+
+* Estruturação de aplicações React
+* Componentização
+* Gerenciamento de estado
+* Integração com APIs
+* Organização de código
+* Desenvolvimento de interfaces responsivas
+
+---
+
+# ⚙️ Como Executar o Projeto
+
+## Clone o repositório
+
+```bash
+git clone https://github.com/GuiSantosMacedo1/Financial-Organization.git
+```
+
+## Acesse a pasta do projeto
+
+```bash
+cd Financial-Organization
+```
+
+## Instale as dependências
+
+```bash
+npm install
+```
+
+## Execute o projeto
+
+```bash
+ng serve
+```
+
+---
+
+# 📂 Estrutura do Projeto
+
+```bash
+src/
+ ├── core
+ ├── dashboard
+ ├── login
+ ├── shared
+ └── transactions
+```
+
+---
+
+# 📌 Melhorias Futuras
+
+* Autenticação de usuários
+* Persistência de dados
+* Dashboard avançado
+* Filtros financeiros
+* Exportação de relatórios
+* Dark mode
+
+---
+
+# 👨‍💻 Autor
+
+Guilherme Santos
+
+LinkedIn:
+https://www.linkedin.com/in/guilherme-santos-macedo/
+
+GitHub:
+https://github.com/GuiSantosMacedo1
