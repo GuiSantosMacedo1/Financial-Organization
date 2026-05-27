@@ -31,7 +31,6 @@ export class TotalsMetasComponent {
   }
   today = new Date().toLocaleDateString('pt-BR');;
   getMetas(){
-    console.log("🚀 ~ TotalsMetasComponent ~ today:", this.today)
     this.loading = true;
     this.error = null;
     this.serviceMeta.getMetas().subscribe({
@@ -45,5 +44,68 @@ export class TotalsMetasComponent {
         this.loading = false;
       }
     });
+  }
+
+  formatNumber(value: number | string): string {
+  return this.parseNumber(value)
+    .toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+}
+
+  valorFaltante(): number[] {
+    return this.metas.map(m => this.valorFaltantePorMeta(m));
+  }
+
+
+  private parseNumber(value: number | string | null | undefined): number {
+    if (!value) return 0;
+    if (typeof value === 'number') {
+      return value;
+    }
+    return Number(
+      value
+        .replace(/\./g, '')
+        .replace(',', '.')
+    ) || 0;
+  }
+
+  private getValues(meta: MetaItem) {
+    let amount = this.parseNumber(meta.amount);
+    let saved = this.parseNumber(meta.amountSaved);
+    if (saved > amount) {
+      [amount, saved] = [saved, amount];
+    }
+    return { amount, saved };
+  }
+
+  valorFaltantePorMeta(meta: MetaItem): number {
+    const { amount, saved } = this.getValues(meta);
+    return Math.max(0, amount - saved);
+  }
+
+  percentageMeta(meta: MetaItem,digits = 1): string {
+    const { amount, saved } = this.getValues(meta);
+    const progress = amount ? saved / amount : 0;
+    return new Intl.NumberFormat(
+      'pt-BR',
+      {
+        style: 'percent',
+        maximumFractionDigits: digits
+      }
+    ).format(progress);
+  }
+
+  percentNumber(meta: MetaItem): number {
+    const { amount, saved } =
+      this.getValues(meta);
+    return Math.round(
+      (saved / amount) * 100
+    ) || 0;
+  }
+  
+  formatCurrency(value: number): string {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 }
