@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { TransactionsService } from '../../core/services/transactions.service';
 import { Router } from '@angular/router';
 import { EditTransactionsComponent } from '../edit-transactions/edit-transactions.component';
 import { DeleteTransactionsComponent } from "../delete-transactions/delete-transactions.component";

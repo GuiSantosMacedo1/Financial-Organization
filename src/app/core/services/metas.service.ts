@@ -12,27 +12,27 @@ export interface MetasCreate {
 
 export interface MetasResponse<T = any> {
   data: T;
-  message: string;
-  timestamp: string;
+  message?: string;
+  timestamp?: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MetasService {
   private apiUrl = 'http://localhost:3000/api/metas';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {}
 
   private authOptions() {
     const token = localStorage.getItem('token');
-    const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}`, 'x-access-token': token }) : undefined;
-    return { ...(headers ? { headers } : {}) };
+    const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : undefined;
+    return headers ? { headers } : {};
   }
 
-  getMetas(): Observable<MetasResponse> {
-    return this.http.get<MetasResponse>(this.apiUrl, this.authOptions());
+  getMetas(): Observable<MetasResponse<MetasCreate[]>> {
+    return this.http.get<MetasResponse<MetasCreate[]>>(this.apiUrl, this.authOptions());
   }
-  postMeta(data: MetasCreate): Observable<MetasResponse> {
-    return this.http.post<MetasResponse>(this.apiUrl, data, this.authOptions());
+
+  postMeta(payload: MetasCreate) {
+    return this.http.post<MetasResponse>(this.apiUrl, payload, this.authOptions());
   }
 }
