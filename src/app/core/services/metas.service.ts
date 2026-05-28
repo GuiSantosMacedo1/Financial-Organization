@@ -6,6 +6,7 @@ export interface MetasCreate {
   title: string;
   description: string;
   amount: number;
+  amountSaved: number;
   date?: string | Date;
   saved: boolean;
 }

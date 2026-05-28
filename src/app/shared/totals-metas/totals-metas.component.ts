@@ -29,7 +29,7 @@ export class TotalsMetasComponent {
   ngOnInit(): void {
     this.getMetas();
   }
-  today = new Date().toLocaleDateString('pt-BR');;
+  today = new Date();
   getMetas(){
     this.loading = true;
     this.error = null;
@@ -74,9 +74,9 @@ export class TotalsMetasComponent {
   private getValues(meta: MetaItem) {
     let amount = this.parseNumber(meta.amount);
     let saved = this.parseNumber(meta.amountSaved);
-    if (saved > amount) {
-      [amount, saved] = [saved, amount];
-    }
+    // if (saved > amount) {
+    //   [amount, saved] = [saved, amount];
+    // }
     return { amount, saved };
   }
 
@@ -103,6 +103,51 @@ export class TotalsMetasComponent {
     return Math.round(
       (saved / amount) * 100
     ) || 0;
+  }
+
+  isOverdue(meta: MetaItem): boolean {
+    const deadline = this.parseLocalDate(meta.date);
+    if (!deadline) {
+      return false;
+    }
+
+    const today = new Date(this.today);
+    today.setHours(0, 0, 0, 0);
+    deadline.setHours(0, 0, 0, 0);
+
+    return deadline < today;
+  }
+
+  formatMetaDate(value?: string | Date): string {
+    const parsed = this.parseLocalDate(value);
+    if (!parsed) {
+      return '—';
+    }
+
+    const day = String(parsed.getDate()).padStart(2, '0');
+    const month = String(parsed.getMonth() + 1).padStart(2, '0');
+    const year = parsed.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
+
+  private parseLocalDate(value?: string | Date): Date | null {
+    if (!value) {
+      return null;
+    }
+
+    if (value instanceof Date) {
+      return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+    }
+
+    const datePart = value.slice(0, 10);
+    const [year, month, day] = datePart.split('-').map(Number);
+
+    if (!year || !month || !day) {
+      return null;
+    }
+
+    return new Date(year, month - 1, day);
   }
   
   formatCurrency(value: number): string {
