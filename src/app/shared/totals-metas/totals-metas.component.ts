@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MetasService } from '../../core/services/metas.service';
+import { forkJoin, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 export interface MetaItem {
+  _id?: string;
   title: string;
   description?: string;
   amount?: number;
@@ -35,12 +38,62 @@ export class TotalsMetasComponent {
     this.error = null;
     this.serviceMeta.getMetas().subscribe({
       next: (res) => {
-        this.metas = res?.data ?? [];
-        this.loading = false;
+        const metas = res?.data ?? [];
+        this.syncSavedMetas(metas);
       },
       error: (err) => {
         console.error('getMetas error', err);
         this.error = err?.message || 'Erro ao carregar metas';
+        this.loading = false;
+      }
+    });
+  }
+
+  get metasSaved(): MetaItem[] {
+    return this.metas.filter(meta => meta.saved === true);
+  }
+
+  get activeMetas(): MetaItem[] {
+    return this.metas.filter(meta => meta.saved !== true);
+  }
+
+  private syncSavedMetas(metas: MetaItem[]): void {
+    const metasToUpdate = metas.filter(meta => this.percentNumber(meta) >= 100 && meta.saved !== true);
+
+    if (!metasToUpdate.length) {
+      this.metas = metas;
+      this.loading = false;
+      return;
+    }
+
+    forkJoin(
+      metasToUpdate.map(meta =>
+        this.serviceMeta.putMeta(meta._id as string, {
+          title: meta.title,
+          description: meta.description ?? '',
+          amount: Number(meta.amount ?? 0),
+          amountSaved: Number(meta.amountSaved ?? 0),
+          date: meta.date ?? '',
+          saved: true
+        }).pipe(
+          catchError(error => {
+            console.error('syncSavedMetas error', error);
+            return of(null);
+          })
+        )
+      )
+    ).pipe(
+      map(() => metas.map(meta =>
+        this.percentNumber(meta) >= 100 ? { ...meta, saved: true } : meta
+      ))
+    ).subscribe({
+      next: updatedMetas => {
+        this.metas = updatedMetas;
+        this.loading = false;
+      },
+      error: err => {
+        console.error('syncSavedMetas final error', err);
+        this.metas = metas;
         this.loading = false;
       }
     });
@@ -74,9 +127,6 @@ export class TotalsMetasComponent {
   private getValues(meta: MetaItem) {
     let amount = this.parseNumber(meta.amount);
     let saved = this.parseNumber(meta.amountSaved);
-    // if (saved > amount) {
-    //   [amount, saved] = [saved, amount];
-    // }
     return { amount, saved };
   }
 

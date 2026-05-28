@@ -36,4 +36,8 @@ export class MetasService {
   postMeta(payload: MetasCreate) {
     return this.http.post<MetasResponse>(this.apiUrl, payload, this.authOptions());
   }
+
+  putMeta(id: string, payload: MetasCreate) {
+    return this.http.put<MetasResponse>(`${this.apiUrl}/${id}`, payload, this.authOptions());
+  }
 }
