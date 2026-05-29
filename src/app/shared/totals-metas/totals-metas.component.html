@@ -10,7 +10,7 @@
             </div>
             <div class="text-end">
               <button class="btn btn-link btn-sm"><i class="fa-solid fa-plus"></i></button>
-              <button class="btn btn-link btn-sm"><i class="fa-regular fa-pen-to-square"></i></button>
+              <button class="btn btn-link btn-sm"><i class="fa-regular fa-pen-to-square" (click)="activeEdit = true"></i></button>
             </div>
           </div>
           <div class="mt-3">
@@ -65,3 +65,5 @@
       </div>
     </div>
   </div>
+
+  <app-edit-metas [isOpen]="activeEdit" (close)="activeEdit = false" ></app-edit-metas>

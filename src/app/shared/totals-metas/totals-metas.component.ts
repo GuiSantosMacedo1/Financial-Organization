@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MetasService } from '../../core/services/metas.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { EditMetasComponent } from "../edit-metas/edit-metas.component";
 
 export interface MetaItem {
   _id?: string;
@@ -17,13 +18,14 @@ export interface MetaItem {
 @Component({
   selector: 'app-totals-metas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EditMetasComponent],
   templateUrl: './totals-metas.component.html',
   styleUrl: './totals-metas.component.scss'
 })
 export class TotalsMetasComponent {
 
   @Input() metas: MetaItem[] = []
+  activeEdit = false;
   loading = false;
   error: string | null = null;
 

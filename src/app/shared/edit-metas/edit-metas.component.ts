@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-metas',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './edit-metas.component.scss'
 })
 export class EditMetasComponent {
-  
+  @Input() isOpen = false
+  @Output() close = new EventEmitter<void>()
+
+  closeModal(){
+    this.close.emit();
+  }
 }

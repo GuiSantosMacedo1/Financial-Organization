@@ -1,1 +1,39 @@
-<p>edit-metas works!</p>
+<div class="modal" [class.show]="isOpen" [style.display]="isOpen ? 'block' : 'none'"
+  [style.backgroundColor]="isOpen ? 'rgba(0, 0, 0, 0.5)' : 'transparent'" tabindex="-1" (click)="closeModal()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nova Meta</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div> -->
+        <form>
+          <div class="form-group mb-3">
+            <label for="title" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="title" name="title" required />
+          </div>
+          <div class="form-group mb-3">
+            <label for="description" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="description" name="description" required />
+          </div>
+          <div class="form-group mb-3">
+            <label for="amount" class="form-label">Valor para ser Atingindo</label>
+            <input currencyMask name="amount" class="form-control text-start" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="amountSaved" class="form-label">Valor atual guardado</label>
+            <input currencyMask name="amountSaved" class="form-control text-start" />
+          </div>
+          <div class="form-group mb-3">
+            <label for="date" class="form-label">Prazo Estabelecido</label>
+            <input type="date" class="form-control" id="date" name="date" required />
+          </div>
+          <div class="modal-footer d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
