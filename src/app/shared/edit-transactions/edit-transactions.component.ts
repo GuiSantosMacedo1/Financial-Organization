@@ -55,7 +55,6 @@ export class EditTransactionsComponent {
     }
     if(!this.validateForm()){
       this.errorMessage = 'Precisa preencher todos os campos'
-      // console.log("🚀 ~ EditTransactionsComponent ~ localTransaction:", this.localTransaction)
       return
     }
     const payload = {

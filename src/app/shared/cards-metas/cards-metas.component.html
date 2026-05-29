@@ -1,0 +1,11 @@
+  <div class="container-fluid row gx-3 align-items-stretch">
+    <div *ngFor="let c of configs" class="col-12 col-sm-6 col-md-3">
+      <div class="card h-100 border rounded">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center p-3">
+          <div class="card-icon border border-0 p-2 rounded-circle text-primary" [ngStyle]="{'background-color': backGroundColor(c.type)}"><i [ngStyle]="{'color': colorText(c.type)}" [class]="iconByType(c.type)"></i></div>
+          <div class="card-title mt-2">{{titleByType(c.type)}}</div>
+          <div class="card-value" [ngStyle]="{'color': colorText(c.type)}">{{ totalsMetas(c.type) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>

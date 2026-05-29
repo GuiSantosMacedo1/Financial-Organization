@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <app-side></app-side>
+  <div class="metas-content">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Metas Financeiras</h2>
+        <p style="color: gray;">Defina e acompanhe seus objetivos financeiros</p>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <button class="btn btn-primary btn-sm rounded p-2" (click)="activeModal = true"><i class="fa-solid fa-plus"></i> Nova Meta</button>
+      </div>
+      <div class="cards">
+      <app-cards-metas [configs]="[
+        { type: 'totals'},
+        { type: 'completed'},
+        { type: 'save'},
+        { type: 'goals'}
+      ]">
+      </app-cards-metas>
+      </div>
+      <app-totals-metas></app-totals-metas>
+    </div>
+  </div>
+</div>
+<app-modal-metas [isOpen]="activeModal" (close)="activeModal = false"></app-modal-metas>
