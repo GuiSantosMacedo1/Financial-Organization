@@ -40,4 +40,8 @@ export class MetasService {
   putMeta(id: string, payload: MetasCreate) {
     return this.http.put<MetasResponse>(`${this.apiUrl}/${id}`, payload, this.authOptions());
   }
+
+  patchAmountSaved(id: string, amountSaved: number) {
+    return this.http.patch<MetasResponse>(`${this.apiUrl}/${id}/amount-saved`, { amountSaved }, this.authOptions());
+  }
 }

@@ -9,7 +9,7 @@
               <div class="text-muted small">{{ m.description }}</div>
             </div>
             <div class="text-end">
-              <button class="btn btn-link btn-sm"><i class="fa-solid fa-plus"></i></button>
+              <button class="btn btn-link btn-sm" (click)="openAdd(m)"><i class="fa-solid fa-plus"></i></button>
               <button class="btn btn-link btn-sm" (click)="openEdit(m)"><i class="fa-regular fa-pen-to-square"></i></button>
             </div>
           </div>
@@ -67,3 +67,4 @@
   </div>
 
   <app-edit-metas [isOpen]="activeEdit" [meta]="selectedMeta" (close)="activeEdit = false" ></app-edit-metas>
+  <app-add-valor-metas [isOpen]="activeAdd" [meta]="selectedMeta" (close)="activeAdd = false" (saved)="getMetas()"></app-add-valor-metas>

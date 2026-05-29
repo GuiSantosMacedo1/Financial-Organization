@@ -1,0 +1,23 @@
+<div class="modal" [class.show]="isOpen" [style.display]="isOpen ? 'block' : 'none'"
+  [style.backgroundColor]="isOpen ? 'rgba(0, 0, 0, 0.5)' : 'transparent'" tabindex="-1" (click)="closeModal()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Meta</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+        <form (ngSubmit)="patchMetas()">
+          <div class="form-group mb-3">
+            <label for="amountSaved" class="form-label">Valor atual guardado</label>
+            <input currencyMask name="amountSaved" class="form-control text-start" required [(ngModel)]="metas.amountSaved" />
+          </div>
+          <div class="modal-footer d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
