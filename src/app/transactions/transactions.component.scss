@@ -27,3 +27,21 @@ input, select {
     outline: none;
   }
 }
+.container{
+  display: flex;
+}
+.button-clear{
+  width: 60%;
+}
+
+@media (max-width: 767.98px) {
+  .container{
+    display: block;
+  }
+  .button-clear{
+    width: 100%;
+  }
+  .btn-transaction{
+    justify-content: flex-start !important;
+  }
+}

@@ -8,3 +8,10 @@
 .metas-content{
   padding: 24px 48px;
 }
+
+@media (max-width: 770px){
+  .btn-meta{
+    justify-content: flex-start !important;
+    margin-bottom: 20px;
+  }
+}

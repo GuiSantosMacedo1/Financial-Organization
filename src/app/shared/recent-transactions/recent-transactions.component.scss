@@ -1,0 +1,47 @@
+@media (max-width: 767.98px) {
+	.transactions {
+		padding: 1rem !important;
+	}
+
+	/* Stack transaction items vertically on small screens */
+	.transaction-item {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.transaction-details {
+		width: 100%;
+		text-align: left;
+		margin-top: 8px;
+	}
+
+	/* Table rows: stack into cards */
+	.container-fluid .row {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
+	}
+
+	.container-fluid .row .col-1 {
+		width: auto !important;
+	}
+
+	.container-fluid .row .col {
+		width: 100% !important;
+		text-align: left !important;
+	}
+
+	.container-fluid .row .col.text-center {
+		text-align: left !important;
+	}
+
+	.container-fluid .row .col.d-flex {
+		justify-content: flex-start !important;
+	}
+
+	.table-header {
+		display: none;
+	}
+}
+
