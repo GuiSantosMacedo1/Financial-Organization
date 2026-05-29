@@ -18,6 +18,7 @@ export class AddValorMetasComponent {
   @Output() saved = new EventEmitter<void>()
 
   metas = {
+    amount : 0,
     amountSaved: 0
   }
 
@@ -28,6 +29,7 @@ export class AddValorMetasComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['meta'] && this.meta) {
       this.metas = {
+        amount: this.meta.amount,
         amountSaved: this.meta.amountSaved ?? 0
       }
     }
@@ -41,6 +43,10 @@ export class AddValorMetasComponent {
 
     if (this.metas.amountSaved == null || this.metas.amountSaved < 0) {
       this.errorMessage = 'Informe um valor válido';
+      return;
+    }
+    if(this.metas.amount < this.metas.amountSaved){
+      this.errorMessage = 'Valor atual guardado não pode ser maior que o valor a ser atingindo';
       return;
     }
 
