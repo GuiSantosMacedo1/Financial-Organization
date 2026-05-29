@@ -26,6 +26,7 @@ export class TotalsMetasComponent {
 
   @Input() metas: MetaItem[] = []
   activeEdit = false;
+  selectedMeta: MetaItem | null = null;
   loading = false;
   error: string | null = null;
 
@@ -33,6 +34,10 @@ export class TotalsMetasComponent {
 
   ngOnInit(): void {
     this.getMetas();
+  }
+  openEdit(meta: MetaItem): void {
+    this.selectedMeta = meta;
+    this.activeEdit = true;
   }
   today = new Date();
   getMetas(){

@@ -3,35 +3,35 @@
   <div class="modal-dialog" (click)="$event.stopPropagation()">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Nova Meta</h5>
+        <h5 class="modal-title">Editar Meta</h5>
         <button type="button" class="btn-close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <!-- <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div> -->
-        <form>
+        <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+        <form (ngSubmit)="putMetas()">
           <div class="form-group mb-3">
             <label for="title" class="form-label">Titulo</label>
-            <input type="text" class="form-control" id="title" name="title" required />
+            <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="metas.title" />
           </div>
           <div class="form-group mb-3">
             <label for="description" class="form-label">Descrição</label>
-            <input type="text" class="form-control" id="description" name="description" required />
+            <input type="text" class="form-control" id="description" name="description" required [(ngModel)]="metas.description" />
           </div>
           <div class="form-group mb-3">
             <label for="amount" class="form-label">Valor para ser Atingindo</label>
-            <input currencyMask name="amount" class="form-control text-start" />
+            <input currencyMask name="amount" class="form-control text-start" required [(ngModel)]="metas.amount"/>
           </div>
           <div class="form-group mb-3">
             <label for="amountSaved" class="form-label">Valor atual guardado</label>
-            <input currencyMask name="amountSaved" class="form-control text-start" />
+            <input currencyMask name="amountSaved" class="form-control text-start" required [(ngModel)]="metas.amountSaved" />
           </div>
           <div class="form-group mb-3">
             <label for="date" class="form-label">Prazo Estabelecido</label>
-            <input type="date" class="form-control" id="date" name="date" required />
+            <input type="date" class="form-control" id="date" name="date" required [(ngModel)]="metas.date" />
           </div>
           <div class="modal-footer d-flex justify-content-end gap-2">
             <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
           </div>
         </form>
       </div>

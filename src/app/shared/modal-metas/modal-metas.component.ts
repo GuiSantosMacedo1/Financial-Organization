@@ -54,7 +54,6 @@ export class ModalMetasComponent {
       this.errorMessage
       return;
     }
-    console.log(this.validateAmount())
     this.serviceMetas.postMeta(this.metas).subscribe(response => {
       this.metaCreate.emit(response);
       this.closeModal();
