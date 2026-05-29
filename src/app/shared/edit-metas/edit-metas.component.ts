@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
 import { MetasService } from '../../core/services/metas.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @Component({
   selector: 'app-edit-metas',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CurrencyMaskModule],
   templateUrl: './edit-metas.component.html',
   styleUrl: './edit-metas.component.scss'
 })
