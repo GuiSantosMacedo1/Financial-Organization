@@ -6,10 +6,7 @@
     </button>
   </div>
   <ng-container *ngIf="activeTodos">
-    <div
-      *ngFor="let transaction of transactions"
-      class="border rounded mb-3 mt-2 bg-light"
-    >
+    <div *ngFor="let transaction of transactions" class="border rounded mb-3 mt-2 bg-light">
       <div class="transaction-item d-flex justify-content-between align-items-center py-3">
         <div class="transaction-info ms-3">
           <div class="transaction-description fw-bold">
@@ -20,11 +17,8 @@
           </div>
         </div>
         <div class="transaction-details text-end me-3">
-          <div
-            class="transaction-amount fw-bold"
-            [class.text-success]="transaction.amount > 0"
-            [class.text-danger]="transaction.amount < 0"
-          >
+          <div class="transaction-amount fw-bold" [class.text-success]="transaction.amount > 0"
+            [class.text-danger]="transaction.amount < 0">
             {{ transaction.amount | currency:'BRL':'symbol':'1.2-2' }}
           </div>
           <div class="transaction-date text-muted small">
@@ -34,46 +28,44 @@
       </div>
     </div>
   </ng-container>
-<div class="border rounded" *ngIf="!activeTodos">
-  <div style="background-color: rgb(211, 211, 211);" class="table-header border rounded-top p-3">
-    <div style="color: rgb(78, 78, 78);" class="row fw-bold">
-      <div class="col">Transação</div>
-      <div style="width: 10%;" class="col-1">Categoria</div>
-      <div class="col d-flex justify-content-center">Data</div>
-      <div class="col">Valor</div>
-      <div class="col text-center">Ações</div>
+  <div class="border rounded" *ngIf="!activeTodos">
+    <div style="background-color: rgb(211, 211, 211);" class="table-header border rounded-top p-3">
+      <div style="color: rgb(78, 78, 78);" class="row fw-bold">
+        <div class="col">Transação</div>
+        <div style="width: 10%;" class="col-1">Categoria</div>
+        <div class="col d-flex justify-content-center">Data</div>
+        <div class="col">Valor</div>
+        <div class="col text-center">Ações</div>
+      </div>
     </div>
-  </div>
-  <div class="container-fluid">
-    <div
-      *ngFor="let transaction of transactions"
-      class="row align-items-center p-3 border-bottom"
-    >
-      <div style="font-size: 0.9rem; gap: 10px;"class="col d-flex align-items-center"> 
-        <div class="border rounded p-2" [ngClass]="transaction.amount > 0 ? 'bg-success-subtle' : 'bg-danger-subtle'">
-          <i class="fas" [ngClass]="transaction.amount > 0 ? 'fa-arrow-up text-success' : 'fa-arrow-down text-danger'"></i>
+    <div class="container-fluid">
+      <div *ngFor="let transaction of transactions" class="row align-items-center p-3 border-bottom">
+        <div style="font-size: 0.9rem; gap: 10px;" class="col d-flex align-items-center">
+          <div class="border rounded p-2" [ngClass]="transaction.amount > 0 ? 'bg-success-subtle' : 'bg-danger-subtle'">
+            <i class="fas"
+              [ngClass]="transaction.amount > 0 ? 'fa-arrow-up text-success' : 'fa-arrow-down text-danger'"></i>
+          </div>
+          {{ transaction.description }}
         </div>
-        {{ transaction.description }} </div>
-      <div style="width: 10%;" class="col-1 badge text-bg-secondary "> {{ transaction.category }} </div>
-      <div class="col d-flex justify-content-center">  {{ transaction.date | date:'dd/MM/yyyy' }} </div>
-      <div
-        class="col fw-bold"
-        [class.text-success]="transaction.amount > 0"
-        [class.text-danger]="transaction.amount < 0"
-      >
-        {{ transaction.amount | currency:'BRL' }}
-      </div>
-      <div class="col text-center">
-        <button class="btn btn-sm btn-outline-primary me-2" (click)="openModalEdit(transaction)">
-          Editar
-        </button>
-        <button class="btn btn-sm btn-outline-danger" (click)="openModalDelete(transaction)">
-          Excluir
-        </button>
+        <div style="width: 10%;" class="col-1 badge text-bg-secondary "> {{ transaction.category }} </div>
+        <div class="col d-flex justify-content-center"> {{ transaction.date | date:'dd/MM/yyyy' }} </div>
+        <div class="col fw-bold" [class.text-success]="transaction.amount > 0"
+          [class.text-danger]="transaction.amount < 0">
+          {{ transaction.amount | currency:'BRL' }}
+        </div>
+        <div class="col text-center">
+          <button class="btn btn-sm btn-outline-primary me-2" (click)="openModalEdit(transaction)">
+            Editar
+          </button>
+          <button class="btn btn-sm btn-outline-danger" (click)="openModalDelete(transaction)">
+            Excluir
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<app-edit-transactions [isOpen]="activeModalEdit" [transaction]="selectedTransaction" (closed)="activeModalEdit= false"></app-edit-transactions>
-<app-delete-transactions [isOpen]="activeModalDelete"[transaction]="selectedTransaction" (closed)="activeModalDelete= false"></app-delete-transactions>
+  <app-edit-transactions [isOpen]="activeModalEdit" [transaction]="selectedTransaction"
+    (closed)="activeModalEdit= false"></app-edit-transactions>
+  <app-delete-transactions [isOpen]="activeModalDelete" [transaction]="selectedTransaction"
+    (closed)="activeModalDelete= false"></app-delete-transactions>
 </div>
