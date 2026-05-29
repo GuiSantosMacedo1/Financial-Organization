@@ -14,6 +14,7 @@ import { filter } from 'rxjs';
 export class SideBar implements OnInit{
 
   activeTab: string = 'dashboard';
+  isMenuOpen = false;
   
   menuItems = [
     { name: 'Dashboard', tab: 'dashboard', route: '/dashboard' },
@@ -29,11 +30,17 @@ export class SideBar implements OnInit{
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe((event: NavigationEnd) => {
       this.updateActiveMenuFromRoute(event.url);
+      this.isMenuOpen = false;
     });
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   onMenuClick(route: string): void {
     this.router.navigate([route]);
+    this.isMenuOpen = false;
   }
   
   private updateActiveMenuFromRoute(url: string): void {
