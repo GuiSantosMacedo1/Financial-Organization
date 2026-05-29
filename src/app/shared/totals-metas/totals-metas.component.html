@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-      <h3 class="mb-3">Metas Concluídas</h3>
+      <h3 class="mb-3 mt-3">Metas Concluídas</h3>
     <div class="col-12 col-sm-6 col-md-6" *ngFor="let m of metasSaved">
       <div class="card border rounded">
         <div class="card-body">
@@ -43,8 +43,7 @@
               <div class="text-muted small">{{ m.description }}</div>
             </div>
             <div class="text-end">
-              <button class="btn btn-link btn-sm"><i class="fa-solid fa-plus"></i></button>
-              <button class="btn btn-link btn-sm"><i class="fa-regular fa-pen-to-square"></i></button>
+              <span class="badge text-bg-success">Concluído</span>
             </div>
           </div>
           <div class="mt-3">
@@ -53,15 +52,13 @@
               <div class="text-muted small">{{ formatNumber(m.amount ?? 0) }}</div>
             </div>
             <div class="progress" style="height:10px; border-radius:6px; overflow:hidden;">
-              <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="percentNumber(m)" [attr.aria-valuenow]="percentNumber(m)" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="percentNumber(m)" [attr.aria-valuenow]="percentNumber(m)" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="d-flex justify-content-between mt-2">
               <div class="small text-muted">{{ percentageMeta(m) }}</div>
-            <div class="small text-muted">{{ isOverdue(m) ? 'Prazo vencido' : 'Prazo válido' }}</div>
             </div>
             <div class="d-flex justify-content-between align-items-center mt-2">
-              <div class="small">Prazo: <strong>{{ formatMetaDate(m.date) }}</strong></div>
-              <div class="small">Faltam: <strong class="text-primary">{{ formatCurrency(valorFaltantePorMeta(m)) }}</strong></div>
+              <div class="small">Prazo Concluído: <strong>{{ formatMetaDate(m.date) }}</strong></div>
             </div>
           </div>
         </div>

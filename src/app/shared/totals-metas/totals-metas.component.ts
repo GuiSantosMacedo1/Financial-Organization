@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MetasService } from '../../core/services/metas.service';
 import { forkJoin, of } from 'rxjs';
@@ -59,12 +59,12 @@ export class TotalsMetasComponent {
 
   private syncSavedMetas(metas: MetaItem[]): void {
     const metasToUpdate = metas.filter(meta => this.percentNumber(meta) >= 100 && meta.saved !== true);
-
     if (!metasToUpdate.length) {
       this.metas = metas;
       this.loading = false;
       return;
     }
+    const today = new Date(this.today);
 
     forkJoin(
       metasToUpdate.map(meta =>
@@ -73,7 +73,7 @@ export class TotalsMetasComponent {
           description: meta.description ?? '',
           amount: Number(meta.amount ?? 0),
           amountSaved: Number(meta.amountSaved ?? 0),
-          date: meta.date ?? '',
+          date: today ?? '',
           saved: true
         }).pipe(
           catchError(error => {
@@ -125,8 +125,8 @@ export class TotalsMetasComponent {
   }
 
   private getValues(meta: MetaItem) {
-    let amount = this.parseNumber(meta.amount);
-    let saved = this.parseNumber(meta.amountSaved);
+    const amount = this.parseNumber(meta.amount);
+    const saved = this.parseNumber(meta.amountSaved);
     return { amount, saved };
   }
 
@@ -135,7 +135,7 @@ export class TotalsMetasComponent {
     return Math.max(0, amount - saved);
   }
 
-  percentageMeta(meta: MetaItem,digits = 1): string {
+  percentageMeta(meta: MetaItem, digits = 1): string {
     const { amount, saved } = this.getValues(meta);
     const progress = amount ? saved / amount : 0;
     return new Intl.NumberFormat(
