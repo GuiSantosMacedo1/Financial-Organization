@@ -19,7 +19,7 @@ export interface MetasResponse<T = any> {
 
 @Injectable({ providedIn: 'root' })
 export class MetasService {
-  private apiUrl = 'http://localhost:3000/api/metas';
+  private apiUrl = 'https://financial-organization-backend.onrender.com/api/metas';
 
   constructor(private http: HttpClient) {}
 
