@@ -44,3 +44,41 @@
 	}
 }
 
+.skeleton {
+  background: #e5e7eb;
+  border-radius: 6px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.title {
+  width: 100px;
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.subtitle{
+  width: 140px;
+  height: 12px;
+}
+.date{
+  width: 40px;
+  height: 12px;  
+}
+.amount {
+  width: 60px;
+  height: 12px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
