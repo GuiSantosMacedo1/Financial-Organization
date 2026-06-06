@@ -40,6 +40,7 @@
         <div class="col text-center">Ações</div>
       </div>
     </div>
+    <ng-container *ngIf="!isLoading; else skeletonTransactions">
     <div class="container-fluid">
       <div *ngFor="let transaction of transactions" class="row align-items-center p-3 border-bottom">
         <div style="font-size: 0.9rem; gap: 10px;" class="col d-flex align-items-center">
@@ -65,6 +66,7 @@
         </div>
       </div>
     </div>
+    </ng-container>
   </div>
 
   <ng-template #skeletonRecent>
@@ -80,6 +82,31 @@
       </div>
     </div>
   </div>
+  </ng-template>
+  <ng-template #skeletonTransactions>
+    <div class="container-fluid">
+    <div *ngFor="let i of [1,2]" class="row align-items-center p-3 border-bottom">
+      <div class="col d-flex align-items-center" style="gap: 10px;">
+        <div class="skeleton skeleton-icon"></div>
+        <div class="skeleton skeleton-description"></div>
+      </div>
+      <div class="col-1">
+        <div class="skeleton skeleton-category"></div>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <div class="skeleton date"></div>
+      </div>
+      <div class="col">
+        <div class="skeleton amount"></div>
+      </div>
+      <div class="col text-center">
+        <div class="d-flex justify-content-center gap-2">
+          <div class="skeleton skeleton-button"></div>
+          <div class="skeleton skeleton-button"></div>
+        </div>
+      </div>
+    </div>
+    </div>
   </ng-template>
   
   <app-edit-transactions [isOpen]="activeModalEdit" [transaction]="selectedTransaction"
