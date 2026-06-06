@@ -6,6 +6,7 @@
     </button>
   </div>
   <ng-container *ngIf="activeTodos">
+    <ng-container *ngIf="!isLoading; else skeletonRecent">
     <div *ngFor="let transaction of transactions" class="border rounded mb-3 mt-2 bg-light">
       <div class="transaction-item d-flex justify-content-between align-items-center py-3">
         <div class="transaction-info ms-3">
@@ -27,6 +28,7 @@
         </div>
       </div>
     </div>
+    </ng-container>
   </ng-container>
   <div class="border rounded" *ngIf="!activeTodos">
     <div style="background-color: rgb(211, 211, 211);" class="table-header border rounded-top p-3">
@@ -64,6 +66,22 @@
       </div>
     </div>
   </div>
+
+  <ng-template #skeletonRecent>
+    <div *ngFor="let i of [1,2]" class="border rounded mb-3 mt-2 bg-light">
+    <div class="d-flex justify-content-between align-items-center py-3">
+      <div class="ms-3 w-100">
+        <div class="skeleton skeleton-line title mb-2"></div>
+        <div class="skeleton skeleton-line subtitle"></div>
+      </div>
+      <div class="text-end me-3">
+        <div class="skeleton skeleton-line amount mb-2"></div>
+        <div class="skeleton skeleton-line date"></div>
+      </div>
+    </div>
+  </div>
+  </ng-template>
+  
   <app-edit-transactions [isOpen]="activeModalEdit" [transaction]="selectedTransaction"
     (closed)="activeModalEdit= false"></app-edit-transactions>
   <app-delete-transactions [isOpen]="activeModalDelete" [transaction]="selectedTransaction"
