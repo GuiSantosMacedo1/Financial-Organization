@@ -12,7 +12,7 @@ https://financial-organization-ashen.vercel.app/
 
 # 🛠️ Tecnologias Utilizadas
 
-* React
+* Angular
 * TypeScript
 * JavaScript
 * HTML
