@@ -17,6 +17,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "fileReplacements": [
+        {
+          "replace": "src/environments/environment.ts",
+          "with": "src/environments/environment.prod.ts"
+        }
+      ],
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

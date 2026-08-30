@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environment/environment';
 
 export interface MetasCreate {
   title: string;
@@ -19,7 +20,7 @@ export interface MetasResponse<T = any> {
 
 @Injectable({ providedIn: 'root' })
 export class MetasService {
-  private apiUrl = 'https://financial-organization-backend.onrender.com/api/metas';
+  private apiUrl = `${environment.apiUrl}/metas`;
 
   constructor(private http: HttpClient) {}
 

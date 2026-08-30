@@ -2,6 +2,7 @@
 
 # Compiled output
 /dist
+/src/environments/environment.ts
 /tmp
 /out-tsc
 /bazel-out
@@ -19,6 +20,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.env
 
 # Visual Studio Code
 .vscode/*

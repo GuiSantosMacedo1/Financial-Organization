@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../environment/environment';
 
 export interface UserCreate { name?: string; email?: string; password: string; }
 export interface AuthResponse {
@@ -17,7 +18,7 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://financial-organization-backend.onrender.com/api/users'
+  private apiUrl = `${environment.apiUrl}/users`;
   constructor(private http: HttpClient) { }
 
   postUser(data: UserCreate): Observable<AuthResponse> {
