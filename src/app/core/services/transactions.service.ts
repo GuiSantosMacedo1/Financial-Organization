@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
+import { environment } from '../../../environments/environments';
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsService {
-  private apiUrl = 'https://financial-organization-backend.onrender.com/api/transactions';
+  private apiUrl = `${environment.apiUrl}/transactions`;
   private transactionsChangedSubject = new Subject<void>();
   transactionsChanged$ = this.transactionsChangedSubject.asObservable();
 

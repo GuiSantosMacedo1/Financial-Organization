@@ -21,6 +21,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environments.ts",
+                "with": "src/environments/environments.prod.ts"
+              }
+            ],
             "outputPath": "dist/financial-organization",
             "index": "src/index.html",
             "browser": "src/main.ts",

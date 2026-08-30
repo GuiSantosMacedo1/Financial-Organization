@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Environment
+/src/environment/environment.ts
+
 # Node
 /node_modules
 npm-debug.log
@@ -19,6 +22,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.env
 
 # Visual Studio Code
 .vscode/*
