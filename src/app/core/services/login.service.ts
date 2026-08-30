@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { environment } from '../../../environment/environments';
+import { environment } from '../../../environments/environments';
 
 export interface UserCreate { name?: string; email?: string; password: string; }
 export interface AuthResponse {
