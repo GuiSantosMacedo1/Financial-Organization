@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NovoUsuarioComponent } from './novo-usuario.component';
+import { LoginService } from '../../core/services/login.service';
 
 describe('NovoUsuarioComponent', () => {
   let component: NovoUsuarioComponent;
@@ -8,7 +9,14 @@ describe('NovoUsuarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NovoUsuarioComponent]
+      imports: [NovoUsuarioComponent], 
+      providers: [{
+        provide: LoginService,
+        useValue: {
+          createUser: () => {},
+          notifyUserCreated: () => {}
+        }
+      }]
     })
     .compileComponents();
 

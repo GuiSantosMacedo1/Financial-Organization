@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddValorMetasComponent } from './add-valor-metas.component';
+import { MetasService } from '../../core/services/metas.service';
 
 describe('AddValorMetasComponent', () => {
   let component: AddValorMetasComponent;
@@ -8,7 +9,14 @@ describe('AddValorMetasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddValorMetasComponent]
+      imports: [AddValorMetasComponent],
+      providers: [{
+        provide: MetasService,
+        useValue: {
+          patchMetas: () => {},
+          notifyMetasChanged: () => {}
+        }
+      }]
     })
     .compileComponents();
 

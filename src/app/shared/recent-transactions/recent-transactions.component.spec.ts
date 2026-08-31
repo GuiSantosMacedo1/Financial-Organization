@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecentTransactionsComponent  } from './recent-transactions.component';
+import { TransactionsService } from '../../core/services/transactions.service';
 
 describe('RecentTransactionsComponent', () => {
   let component: RecentTransactionsComponent;
@@ -8,7 +9,14 @@ describe('RecentTransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecentTransactionsComponent]
+      imports: [RecentTransactionsComponent],
+      providers: [{
+        provide: TransactionsService,
+        useValue: {
+          getTransactions: () => {},
+          notifyTransactionsChanged: () => {}
+        }
+      }]
     })
     .compileComponents();
 
