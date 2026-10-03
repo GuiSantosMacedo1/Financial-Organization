@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditTransactionsComponent } from './edit-transactions.component';
+import { TransactionsService } from '../../core/services/transactions.service';
 
 describe('EditTransactionsComponent', () => {
   let component: EditTransactionsComponent;
@@ -8,7 +9,14 @@ describe('EditTransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditTransactionsComponent]
+      imports: [EditTransactionsComponent],
+      providers: [{
+        provide: TransactionsService,
+        useValue: {
+          getTransactions: () => {},
+          notifyTransactionsChanged: () => {}
+        }
+      }]
     })
     .compileComponents();
 

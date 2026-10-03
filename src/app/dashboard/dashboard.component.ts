@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardsComponent } from '../shared/cards/cards.component';
 import { RecentTransactionsComponent } from "../shared/recent-transactions/recent-transactions.component";
@@ -18,11 +18,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class DashboardComponent {
   activeModal: boolean = false;
   transactions: [] = [];
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(private transactionsService: TransactionsService){}
   ngOnInit() {
       this.loadTransactions();
-      this.transactionsService.transactionsChanged$.pipe(takeUntilDestroyed()).subscribe(() => {
+      this.transactionsService.transactionsChanged$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
           this.loadTransactions();
         });
     }

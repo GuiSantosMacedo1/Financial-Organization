@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { MetasService } from '../../core/services/metas.service';
 import { TotalsMetasComponent } from './totals-metas.component';
 
 describe('TotalsMetasComponent', () => {
@@ -8,7 +10,13 @@ describe('TotalsMetasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TotalsMetasComponent]
+      imports: [TotalsMetasComponent],
+      providers: [
+        {
+          provide: MetasService,
+          useValue: { getMetas: () => of({ data: [] }) }
+        }
+      ]
     })
     .compileComponents();
 

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
+import { TransactionsService } from '../../core/services/transactions.service';
 import { DeleteTransactionsComponent } from './delete-transactions.component';
 
 describe('DeleteTransactionsComponent', () => {
@@ -8,7 +10,14 @@ describe('DeleteTransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeleteTransactionsComponent]
+      imports: [DeleteTransactionsComponent], 
+      providers: [{
+        provide: TransactionsService,
+        useValue: {
+          deleteTransactions: () => of({}),
+          notifyTransactionsChanged: () => {}
+        }
+      }]
     })
     .compileComponents();
 
