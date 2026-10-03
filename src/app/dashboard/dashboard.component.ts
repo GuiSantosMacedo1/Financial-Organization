@@ -27,17 +27,11 @@ import { TransactionsService } from '../core/services/transactions.service';
 export class DashboardComponent {
   activeModal = false;
   transactions: [] = [];
+  isLoading = false;
+  activeTodos = false;
   private readonly destroyRef = inject(DestroyRef);
 
   constructor(private transactionsService: TransactionsService){}
-  ngOnInit() {
-      this.loadTransactions();
-      this.transactionsService.transactionsChanged$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-          this.loadTransactions();
-        });
-    }
-
-  constructor(private transactionsService: TransactionsService) { }
 
   ngOnInit() {
     this.loadTransactions(true);
