@@ -1,0 +1,32 @@
+<section>
+  <h2>Dados da conta</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <label>Nome <input formControlName="name" /></label>
+    <label>E-mail <input formControlName="email" type="email" /></label>
+
+    <button type="submit" [disabled]="profileForm.invalid || profileForm.pristine">
+      Salvar
+    </button>
+
+    @if (profileMessage) { <p role="status">{{ profileMessage }}</p> }
+    @if (profileError) { <p role="alert">{{ profileError }}</p> }
+  </form>
+</section>
+
+<section>
+  <h2>Alterar senha</h2>
+  <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+    <label>Senha atual <input formControlName="currentPassword" type="password" /></label>
+    <label>Nova senha <input formControlName="newPassword" type="password" /></label>
+    <label>Confirmar nova senha <input formControlName="confirmPassword" type="password" /></label>
+
+    @if (passwordForm.hasError('passwordsMismatch')) {
+    <p role="alert">As senhas não coincidem.</p>
+    }
+
+    <button type="submit" [disabled]="passwordForm.invalid">Alterar senha</button>
+
+    @if (passwordMessage) { <p role="status">{{ passwordMessage }}</p> }
+    @if (passwordError) { <p role="alert">{{ passwordError }}</p> }
+  </form>
+</section>

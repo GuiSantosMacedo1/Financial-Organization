@@ -39,7 +39,7 @@ export class SideBar implements OnInit{
   }
 
   onMenuClick(route: string): void {
-    this.router.navigate([route]);
+    this.router.navigateByUrl(route);
     this.isMenuOpen = false;
   }
   

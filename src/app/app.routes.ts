@@ -6,7 +6,8 @@ export const routes: Routes = [
   { path: 'dashboard', canActivate: [authGuard], loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) },
   { path: 'transactions',canActivate: [authGuard], loadComponent: () => import('./transactions/transactions.component').then(m => m.TransactionsComponent) },
   { path: 'novoUsuario', loadComponent: () => import('./shared/novo-usuario/novo-usuario.component').then(m => m.NovoUsuarioComponent) },
-  { path: 'metas', canActivate: [authGuard], loadComponent: () => import('./metas/metas.component').then(m => m.MetasComponent) }
+  { path: 'metas', canActivate: [authGuard], loadComponent: () => import('./metas/metas.component').then(m => m.MetasComponent) },
+  { path: 'settings', canActivate: [authGuard], loadComponent: () => import('./settings/settings.component').then(m => m.SettingsComponent) },
 ];
 
 
