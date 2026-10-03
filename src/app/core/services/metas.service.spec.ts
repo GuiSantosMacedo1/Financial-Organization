@@ -1,4 +1,3 @@
-// metas.service.spec.ts
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -7,7 +6,7 @@ import {
 } from '@angular/common/http/testing';
 
 import { MetasService, MetasCreate, MetasResponse } from './metas.service';
-import { environment } from '../../../environments/environments'; // ajuste o caminho
+import { environment } from '../../../environments/environments';
 
 describe('MetasService', () => {
   let service: MetasService;
