@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="cards-container">
-    <app-cards [transactions]="transactions" [configs]="[
+    <app-cards [transactions]="transactions" [isLoading]="isLoading" [configs]="[
       { type: 'income'},
       { type: 'expense'},
       { type: 'balance'}
@@ -21,10 +21,10 @@
   </div>
   <div class="transactions-container justify-content-between row gx-0 gy-3 px-5 mt-2">
     <div class="col-12 col-lg-8">
-      <app-recent-transactions [transactions]="transactions" [activeTodos]="true"></app-recent-transactions>
+      <app-recent-transactions [transactions]="transactions" [activeTodos]="true" [isLoading]="isLoading"></app-recent-transactions>
     </div>
     <div class="col-12 col-lg-4">
-      <app-spending [transactions]="transactions"></app-spending>
+      <app-spending [transactions]="transactions" [isLoading]="isLoading"></app-spending>
     </div>
   </div>
 </div>

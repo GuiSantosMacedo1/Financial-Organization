@@ -14,6 +14,7 @@ import { DeleteTransactionsComponent } from "../delete-transactions/delete-trans
 export class RecentTransactionsComponent {
   @Input() activeTodos: boolean = false;
   @Input() transactions: any[] = [];
+  @Input() isLoading = false;
   selectedTransaction: any = null
   activeModalEdit: any = false;
   activeModalDelete: any = false;

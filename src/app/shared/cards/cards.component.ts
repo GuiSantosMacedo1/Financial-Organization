@@ -20,6 +20,7 @@ export interface CardConfig {
 export class CardsComponent {
   @Input() configs: CardConfig[] = []
   @Input() transactions: any[] = [];
+  @Input() isLoading = false;
 
   totals = { income: 0, expense: 0, balance: 0, count: 0 };
 

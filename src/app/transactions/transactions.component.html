@@ -27,7 +27,7 @@
     </div>
     </div>
     <div class="cards mt-3">
-      <app-cards [transactions]="filteredTransactions" [configs]="[
+      <app-cards [transactions]="filteredTransactions" [isLoading]="isLoading" [configs]="[
         { type: 'income'},
         { type: 'expense'},
         { type: 'count'}

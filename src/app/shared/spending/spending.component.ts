@@ -11,6 +11,7 @@ import { TransactionsService } from '../../core/services/transactions.service';
 })
 export class SpendingComponent {
   @Input() transactions: any[] = [];
+  @Input()isLoading = true;
   categories: any[] = []
 
   ngOnChanges() {
