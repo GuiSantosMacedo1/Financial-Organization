@@ -4,22 +4,22 @@
     <div class="row">
       <div class="col-md-6">
         <h2>Transações</h2>
-        <p style="color: gray;">Gerencie todas as suas transações</p>
+        <p>Gerencie todas as suas transações</p>
       </div>
       <div class="btn-transaction col-md-6 d-flex align-items-center justify-content-end">
         <button class="btn btn-primary btn-sm rounded p-2" (click)="activeModal = true"><i class="fa-solid fa-plus"></i> Nova Transação</button>
       </div>
     </div>
   </div>
-  <div class="fil px-5 g-3">
-    <div class="container border rounded" style="gap: 10px; padding: 16px; background-color: white;">
+  <div class=" fil px-5 g-3">
+    <div class="search container border rounded" style="gap: 10px; padding: 16px;">
       <input class="mb-2" placeholder="Buscar Transação" type="text" style="font-size: 0.9rem;" [(ngModel)]="searchTerm">
-      <select class = "mb-2" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;" [(ngModel)]="searchType">
+      <select class = "mb-2" name="form-select" id="formSelect" style="font-size: 0.9rem;" [(ngModel)]="searchType">
         <option value="">Todos</option>
         <option value="income">Receitas</option>
         <option value="expense">Despesas</option>
       </select>
-      <select class = "mb-2" name="form-select" id="formSelect" style="font-size: 0.9rem; color: gray;" [(ngModel)]="searchCategory">
+      <select class = "mb-2" name="form-select" id="formSelect" style="font-size: 0.9rem" [(ngModel)]="searchCategory">
         <option value="">Todas as Categorias</option>
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>

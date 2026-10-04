@@ -1,6 +1,6 @@
 <section>
   <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-    <div class="mb-3 container border border-1 rounded p-3 bg-white">
+    <div class="mb-3 container border border-1 rounded p-3 perfil-settings">
       <div class="row">
         <h2>Informações da Conta</h2>
         <p style="color: gray;">Atualize suas informações pessoais</p>
@@ -23,7 +23,7 @@
 
 <section>
   <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
-    <div class="mb-3 container border border-1 rounded p-3 bg-white">
+    <div class="password-settings mb-3 container border border-1 rounded p-3">
       <div class="row">
         <h2>Alterar Senha</h2>
         <p style="color: gray;">Altere sua senha de acesso</p>

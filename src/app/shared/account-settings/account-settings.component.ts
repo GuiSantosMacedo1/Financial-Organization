@@ -21,7 +21,8 @@ export function passwordsMatch(group: AbstractControl): ValidationErrors | null 
   selector: 'app-account-settings',
   standalone: true,
   imports: [ReactiveFormsModule],
-templateUrl: './account-settings.component.html',
+  templateUrl: './account-settings.component.html',
+  styleUrl: './account-settings.component.scss',
 })
 export class AccountSettingsComponent implements OnInit {
   private fb = inject(FormBuilder);
