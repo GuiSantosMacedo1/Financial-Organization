@@ -72,6 +72,8 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   changePassword(): void {
+    this.passwordForm.markAllAsTouched();
+
     if (this.passwordForm.invalid) return;
 
     this.passwordMessage = '';
