@@ -45,4 +45,8 @@ export class NovoUsuarioComponent {
     }
     return true;
   }
+
+  navigateToLogin() {
+    this.route.navigate(['/login']);
+  }
 }
