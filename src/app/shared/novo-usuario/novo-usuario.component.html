@@ -2,7 +2,7 @@
   <div class="card shadow-sm p-4" style="min-width: 320px; max-width: 420px; width: 100%;">
     <div class="text-center mb-4">
       <h2 class="mb-1">Login</h2>
-      <p class="text-muted mb-0">Adicione informações para se registrar</p>
+      <p class="mb-0">Adicione informações para se registrar</p>
     </div>
 
     <form (ngSubmit)="createUsers()">
@@ -24,6 +24,8 @@
 
       <div class="d-grid">
         <button type="submit" class="btn btn-primary">Criar</button>
+
+        <button type="button" class="btn btn-link mt-2" (click)="navigateToLogin()">Já possui uma conta? Faça login</button>
       </div>
     </form>
   </div>

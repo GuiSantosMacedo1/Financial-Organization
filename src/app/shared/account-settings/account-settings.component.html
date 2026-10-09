@@ -1,0 +1,67 @@
+<section>
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <div class="mb-3 container border border-1 rounded p-3 perfil-settings">
+      <div class="row">
+        <h2>Informações da Conta</h2>
+        <p style="color: gray;">Atualize suas informações pessoais</p>
+        <div class="col-md-6">
+          <label class="form-label"> Nome</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" formControlName="email">
+        </div>
+      </div>
+      @if (profileMessage) { <p role="status">{{ profileMessage }}</p> }
+      @if (profileError) { <p role="alert">{{ profileError }}</p> }
+      <button type="submit" class="btn btn-primary mt-3"
+        [disabled]="profileForm.invalid || profileForm.pristine">Salvar</button>
+    </div>
+  </form>
+</section>
+
+<section>
+  <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+    <div class="password-settings mb-3 container border border-1 rounded p-3">
+      <div class="row">
+        <h2>Alterar Senha</h2>
+        <p style="color: gray;">Altere sua senha de acesso</p>
+        <div class="col-md-4">
+          <label class="form-label">Senha atual</label>
+          <input type="password" class="form-control" formControlName="currentPassword">
+          @if (passwordForm.controls.currentPassword.touched &&
+          passwordForm.controls.currentPassword.hasError('required')) {
+          <small class="text-danger">Informe sua senha atual.</small>
+          }
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Nova senha</label>
+          <input type="password" class="form-control" formControlName="newPassword">
+          @if (passwordForm.controls.newPassword.touched &&
+          passwordForm.controls.newPassword.hasError('required')) {
+          <small class="text-danger">Informe uma nova senha.</small>
+          }
+          @if (passwordForm.controls.newPassword.touched &&
+          passwordForm.controls.newPassword.hasError('minlength')) {
+          <small class="text-danger">A senha deve ter pelo menos 8 caracteres.</small>
+          }
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Confirmar nova senha</label>
+          <input type="password" class="form-control" formControlName="confirmPassword">
+          @if (passwordForm.controls.confirmPassword.touched &&
+          passwordForm.controls.confirmPassword.hasError('required')) {
+          <small class="text-danger">Confirme sua nova senha.</small>
+          }
+        </div>
+      </div>
+      @if (passwordForm.touched && passwordForm.hasError('passwordsMismatch')) {
+      <p class="text-danger mt-1 mb-1" role="alert">As senhas não coincidem.</p>
+      }
+      @if (passwordMessage) { <p class="text-success mt-1 mb-1" role="status">{{ passwordMessage }}</p> }
+      @if (passwordError) { <p class="text-danger mt-1 mb-1" role="alert">{{ passwordError }}</p> }
+      <button type="submit" class="btn btn-primary mt-3">Alterar senha</button>
+    </div>
+  </form>
+</section>

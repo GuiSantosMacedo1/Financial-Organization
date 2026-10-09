@@ -1,0 +1,21 @@
+.card{
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+p {
+  color: var(--text);
+}
+
+input {
+  background-color: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+input:focus {
+  background-color: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}

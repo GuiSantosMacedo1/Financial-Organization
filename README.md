@@ -88,10 +88,27 @@ cd Financial-Organization
 npm install
 ```
 
-## Execute o projeto
+## Execute o projeto em desenvolvimento
+
+O ambiente de desenvolvimento usa `src/environments/environments.ts`, que aponta
+para a API local (`http://localhost:3000/api`):
 
 ```bash
-ng serve
+npm run dev
+```
+
+Também é possível iniciar explicitamente com a configuração de desenvolvimento:
+
+```bash
+npx ng serve --configuration development
+```
+
+Para gerar um build de produção, use a configuração `production`. Nesse caso,
+o Angular substitui `src/environments/environments.ts` por
+`src/environments/environments.prod.ts`:
+
+```bash
+npm run build
 ```
 
 ---

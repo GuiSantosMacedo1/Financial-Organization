@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #fafafa;
 }
 
 .transactions-content{
@@ -14,10 +13,10 @@ input, select {
   width: 100%;
   font-size: 1.15rem;
   padding: 0.675em 6em 0.675em 1em;
-  background-color: #fff;
-  border: 1px solid #caced1;
+  background-color: var(--surface-3);
+  border: 1px solid var(--text-muted);
   border-radius: 0.25rem;
-  color: #000;
+  color:var(--text);
   cursor: pointer;
   transition: border-color 0.3s ease;
 
@@ -26,6 +25,10 @@ input, select {
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
     outline: none;
   }
+}
+.search{
+  background-color: var(--surface-2);
+  border-color: var(--border) !important;
 }
 .container{
   display: flex;
