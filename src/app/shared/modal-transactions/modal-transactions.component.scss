@@ -1,0 +1,17 @@
+.modal-content{
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+input, select, option {
+  background-color: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  background-color: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}
