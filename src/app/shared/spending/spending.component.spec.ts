@@ -20,4 +20,9 @@ describe('SpendingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should use the health icon and color for the stored category value', () => {
+    expect(component.getIconsByCategory('Saude')).toBe('fa-heart');
+    expect(component.getCategoryColor('Saude')).toBe('bg-info');
+  });
 });

@@ -42,7 +42,7 @@ export class SpendingComponent {
       case 'Trabalho': return 'fa-briefcase';
       case 'Lazer': return 'fa-film';
       case 'Transporte': return 'fa-car';
-      case 'Saúde': return 'fa-heart';
+      case 'Saude': return 'fa-heart';
       case 'Conta': return 'fa-file-invoice';
       default: return 'fa-question';
     }
@@ -53,6 +53,7 @@ export class SpendingComponent {
       case 'Trabalho': return 'bg-primary';
       case 'Lazer': return 'bg-danger';
       case 'Transporte': return 'bg-warning';
+      case 'Saude':
       case 'Saúde': return 'bg-info';
       case 'Conta': return 'bg-secondary';
       default: return 'bg-secondary';
