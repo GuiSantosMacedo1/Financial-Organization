@@ -72,10 +72,10 @@ export class CardsComponent {
 }
     colorText(type: CardType) {
     const map = {
-    income: 'green',
-    expense: 'red',
-    balance: 'blue',
-    count: 'blue'
+    income: 'var(--income)',
+    expense: 'var(--expense)',
+    balance: 'var(--balance)',
+    count: 'var(--balance)'
   };
     return map[type];
   }

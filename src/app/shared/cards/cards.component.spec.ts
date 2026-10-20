@@ -69,14 +69,14 @@ describe('CardsComponent', () => {
   });
 
   it('should return the correct background color by type', () => {
-    expect(component.backGroundColor('income')).toBe('rgb(175, 249, 175)');
+    expect(component.backGroundColor('income')).toBe('var(--income-bg)');
     expect(component.backGroundColor('expense')).toBe('rgb(251, 201, 201)');
     expect(component.backGroundColor('balance')).toBe('rgb(180, 236, 255)');
     expect(component.backGroundColor('count')).toBe('rgb(180, 236, 255)');
   });
 
   it('should return the correct text color by type', () => {
-    expect(component.colorText('income')).toBe('green');
+    expect(component.colorText('income')).toBe('var(--income)');
     expect(component.colorText('expense')).toBe('red');
     expect(component.colorText('balance')).toBe('blue');
     expect(component.colorText('count')).toBe('blue');
