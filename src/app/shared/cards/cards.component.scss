@@ -3,13 +3,17 @@
   border-color: var(--border) !important;
 }
 
-.card-title:first-child{
+.card-title{
+  color: var(--text);
+}
+
+.card-value:first-child{
   color: var(--income);
   }
-.card-title:nth-child(2){
+.card-value:nth-child(2){
   color: var(--expense);
   }
-.card-title:nth-child(3){
+.card-value:nth-child(3){
   color: var(--balance);
   }
 
