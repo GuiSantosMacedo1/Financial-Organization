@@ -22,7 +22,7 @@ describe('CardsComponent', () => {
     ];
 
     component.configs = [
-      { type: 'income', title: 'Receitas' },
+      { type: 'income', title: 'Ganhos' },
       { type: 'expense', title: 'Despesas' },
       { type: 'balance', title: 'Saldo' },
       { type: 'count', title: 'Transações' }
@@ -55,7 +55,7 @@ describe('CardsComponent', () => {
   });
 
   it('should return the correct title by type', () => {
-    expect(component.titleByType('income')).toBe('Receitas');
+    expect(component.titleByType('income')).toBe('Ganhos');
     expect(component.titleByType('expense')).toBe('Despesas');
     expect(component.titleByType('balance')).toBe('Saldo');
     expect(component.titleByType('count')).toBe('Transações');

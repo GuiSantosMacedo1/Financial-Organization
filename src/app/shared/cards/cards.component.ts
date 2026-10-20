@@ -47,7 +47,7 @@ export class CardsComponent {
   }
 
   titleByType(type: CardType) {
-    const map = { income: 'Receitas', expense: 'Despesas', balance: 'Saldo', count: 'Transações' };
+    const map = { income: 'Ganhos', expense: 'Despesas', balance: 'Saldo', count: 'Transações' };
     return map[type];
   }
 
