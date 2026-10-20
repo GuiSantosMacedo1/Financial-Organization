@@ -7,16 +7,6 @@
   color: var(--text);
 }
 
-.card-value:first-child{
-  color: var(--income);
-  }
-.card-value:nth-child(2){
-  color: var(--expense);
-  }
-.card-value:nth-child(3){
-  color: var(--balance);
-  }
-
 @media (max-width: 770px){
   .cards{
     gap: 0px !important;

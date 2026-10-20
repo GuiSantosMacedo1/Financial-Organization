@@ -3,7 +3,7 @@
     <div *ngFor="let c of configs" class="card-item col border rounded p-3">
       <div class="card-top d-flex justify-content-left align-items-center">
         <div class="card-icon border p-2 rounded" [ngStyle]="{'background-color': backGroundColor(c.type)}">
-          <i [ngStyle]="{'color': colorText(c.type)}" [class]="iconByType(c.type)">
+          <i [ngStyle]="{'color': colorIcon(c.type)}" [class]="iconByType(c.type)">
           </i>
         </div>
         <div class="ms-4">

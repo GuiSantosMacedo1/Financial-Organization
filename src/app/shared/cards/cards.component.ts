@@ -79,4 +79,13 @@ export class CardsComponent {
   };
     return map[type];
   }
+  colorIcon(type: CardType) {
+    const map = {
+    income: 'green',
+    expense: 'red',
+    balance: 'blue',
+    count: 'blue'
+  };
+    return map[type];
+  }
 }
