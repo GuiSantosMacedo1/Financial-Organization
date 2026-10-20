@@ -3,8 +3,14 @@
   border-color: var(--border) !important;
 }
 
-.card-title{
-  color: var(--text);
+.card-title:first-child{
+  color: var(--income);
+  }
+.card-title:nth-child(2){
+  color: var(--expense);
+  }
+.card-title:nth-child(3){
+  color: var(--balance);
   }
 
 @media (max-width: 770px){
